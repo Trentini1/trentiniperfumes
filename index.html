@@ -5,16 +5,68 @@
   <title>Trentini Perfumes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: sans-serif; margin: 0; background: #fffaf5; color: #333; }
-    header, footer { background: #2c2c2c; color: white; text-align: center; padding: 20px; }
-    .hero { padding: 60px 20px; text-align: center; background: #e8d9c3; }
+    body { 
+      font-family: sans-serif; 
+      margin: 0; 
+      background: url('fundo.png') no-repeat center center fixed; 
+      background-size: cover;
+      color: #333; 
+      position: relative;
+    }
+
+    /* Camada de fundo com opacidade */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3); /* Aqui definimos a transparência */
+      z-index: -1; /* Coloca a camada atrás de outros elementos */
+    }
+
+    header, footer { 
+      background: rgba(44, 44, 44, 0.8); 
+      color: white; 
+      text-align: center; 
+      padding: 20px; 
+    }
+    .hero { 
+      padding: 60px 20px; 
+      text-align: center; 
+      background: rgba(232, 217, 195, 0.9); 
+    }
     .hero h1 { font-size: 2.5em; }
-    .produtos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 30px; }
-    .produto { background: white; border-radius: 10px; padding: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .produtos { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 20px; 
+      padding: 30px; 
+    }
+    .produto { 
+      background: white; 
+      border-radius: 10px; 
+      padding: 15px; 
+      box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+    }
     .produto h3 { margin: 10px 0 5px; }
     .produto p { font-size: 0.9em; color: #555; }
-    .produto strong { color: #000; display: block; margin-top: 10px; font-size: 1.1em; }
-    a.botao { background: #25D366; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 10px; }
+    .produto strong { 
+      color: #000; 
+      display: block; 
+      margin-top: 10px; 
+      font-size: 1.1em; 
+    }
+    a.botao { 
+      background: #25D366; 
+      color: white; 
+      padding: 10px 20px; 
+      border-radius: 5px; 
+      text-decoration: none; 
+      display: inline-block; 
+      margin-top: 10px; 
+    }
   </style>
 </head>
 <body>
@@ -30,7 +82,6 @@
 </section>
 
 <section class="produtos">
-
   <div class="produto">
     <h3>LATTAFA ASSAD</h3>
     <p>Amadeirado, doce e intenso. Lembra o Sauvage Elixir. Perfeito pra noite.</p>
@@ -66,7 +117,6 @@
     <p>Loção corporal feminina. Toque sensual e adocicado.</p>
     <strong>R$ 139,99</strong>
   </div>
-
 </section>
 
 <footer>

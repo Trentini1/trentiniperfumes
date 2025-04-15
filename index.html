@@ -1,90 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Trentini Perfumes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fffaf5;
-      color: #333;
-    }
-    header {
-      background-color: #2c2c2c;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    .hero {
-      background-image: url('https://via.placeholder.com/1500x500'); /* Troque pela imagem de destaque */
-      background-size: cover;
-      background-position: center;
-      padding: 100px 20px;
-      text-align: center;
-      color: white;
-    }
-    .hero h1 {
-      font-size: 3em;
-    }
-    .produtos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 40px;
-    }
-    .produto {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      padding: 20px;
-      text-align: center;
-    }
-    .produto img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-    footer {
-      background: #2c2c2c;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
+    body { font-family: sans-serif; margin: 0; background: #fffaf5; color: #333; }
+    header, footer { background: #2c2c2c; color: white; text-align: center; padding: 20px; }
+    .hero { padding: 60px 20px; text-align: center; background: #e8d9c3; }
+    .hero h1 { font-size: 2.5em; }
+    .produtos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 30px; }
+    .produto { background: white; border-radius: 10px; padding: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .produto h3 { margin: 10px 0 5px; }
+    .produto p { font-size: 0.9em; color: #555; }
+    .produto strong { color: #000; display: block; margin-top: 10px; font-size: 1.1em; }
+    a.botao { background: #25D366; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 10px; }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Trentini Perfumes</h1>
-    <p>Perfumes árabes de alta qualidade</p>
-  </header>
+<header>
+  <h1>Trentini Perfumes</h1>
+  <p>Perfumes árabes e importados de alto padrão</p>
+</header>
 
-  <section class="hero">
-    <h1>Descubra seu aroma perfeito</h1>
-    <p>Importados, exclusivos e marcantes</p>
-  </section>
+<section class="hero">
+  <h1>Descubra fragrâncias inesquecíveis</h1>
+  <p>Masculinos, femininos, unissex, Victoria's Secret e muito mais</p>
+</section>
 
-  <section class="produtos">
-    <div class="produto">
-      <img src="https://via.placeholder.com/300x300" alt="Perfume 1">
-      <h3>Oud Royal</h3>
-      <p>Fragrância intensa e marcante. Ideal para noites especiais.</p>
-      <strong>R$ 120,00</strong>
-    </div>
-    <div class="produto">
-      <img src="https://via.placeholder.com/300x300" alt="Perfume 2">
-      <h3>Amber Musk</h3>
-      <p>Doce e elegante, com notas de âmbar e baunilha.</p>
-      <strong>R$ 110,00</strong>
-    </div>
-    <!-- Adicione mais produtos aqui -->
-  </section>
+<section class="produtos">
 
-  <footer>
-    <p>&copy; 2025 Trentini Perfumes - Todos os direitos reservados</p>
-  </footer>
+  <div class="produto">
+    <h3>LATTAFA ASSAD</h3>
+    <p>Amadeirado, doce e intenso. Lembra o Sauvage Elixir. Perfeito pra noite.</p>
+    <strong>R$ 239,99</strong>
+  </div>
+
+  <div class="produto">
+    <h3>AL NOBLE WAZEER</h3>
+    <p>Doce, frutado e elegante. Chocolate, caramelo e frutas.</p>
+    <strong>R$ 239,90</strong>
+  </div>
+
+  <div class="produto">
+    <h3>LATTAFA KHAMRAH</h3>
+    <p>Doce, especiado e quente. Canela, tâmaras e baunilha.</p>
+    <strong>R$ 249,99</strong>
+  </div>
+
+  <div class="produto">
+    <h3>LATTAFA YARA</h3>
+    <p>Feminino doce e tropical. Orquídea, tangerina, frutas tropicais.</p>
+    <strong>R$ 239,99</strong>
+  </div>
+
+  <div class="produto">
+    <h3>KIT LATTAFA ASAD + ZANZIBAR</h3>
+    <p>Perfumes masculinos marcantes em kit especial.</p>
+    <strong>R$ 419,99</strong>
+  </div>
+
+  <div class="produto">
+    <h3>VICTORIA'S SECRET LOVE SPELL</h3>
+    <p>Loção corporal feminina. Toque sensual e adocicado.</p>
+    <strong>R$ 139,99</strong>
+  </div>
+
+</section>
+
+<footer>
+  <p>Fale com a gente no WhatsApp: <br>
+    <a class="botao" href="https://wa.me/5541995252161" target="_blank">📲 41 99525-2161</a>
+  </p>
+  <p>Siga no Instagram: <a href="https://www.instagram.com/trentini.perfumes" style="color: #fff;">@trentini.perfumes</a></p>
+  <p>&copy; 2025 Trentini Perfumes</p>
+</footer>
 
 </body>
 </html>

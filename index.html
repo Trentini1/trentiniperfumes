@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Trentini Perfumes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html { height: 100%; font-family: 'Segoe UI', sans-serif; }
 
     .tela-inicial {
       width: 100%;
@@ -30,8 +22,7 @@
       background-color: rgba(0, 0, 0, 0.3);
     }
 
-    .tela-inicial h1,
-    .tela-inicial p {
+    .tela-inicial h1, .tela-inicial p {
       z-index: 2;
       animation: fadeIn 2s ease forwards;
       opacity: 0;
@@ -46,8 +37,7 @@
 
     .filtro-blur {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
       height: 100%;
       backdrop-filter: blur(12px);
@@ -58,24 +48,26 @@
       pointer-events: none;
     }
 
-    .foco-trentini {
+    .logo-trentini {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) scale(0.8);
-      font-size: 3.5em;
-      color: white;
       z-index: 6;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 25px 50px;
-      border-radius: 20px;
+      width: 250px;
+      height: auto;
       display: none;
       animation: popInOut 2s ease forwards;
+
+      -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+      mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+      mask-repeat: no-repeat;
+      mask-size: cover;
     }
 
     .botoes {
-      position: absolute;
-      top: 60%;
+      position: fixed;
+      top: 55%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 7;
@@ -85,7 +77,6 @@
       gap: 20px;
       opacity: 0;
       animation: fadeIn 1s ease forwards;
-      padding: 20px;
     }
 
     .botoes a {
@@ -113,98 +104,61 @@
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes popInOut {
-      0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
-      }
-      25% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-      75% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .botoes {
-        top: 55%;
-        gap: 16px;
-      }
-
-      .botoes a {
-        font-size: 1em;
-        padding: 12px 24px;
-      }
-
-      .botoes a img {
-        width: 22px;
-        height: 22px;
-      }
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+      25% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      75% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
     }
   </style>
 </head>
 <body>
 
-  <div class="tela-inicial" id="tela">
-    <h1>Bem-vindo</h1>
-    <p>Clique em qualquer lugar para começar</p>
+<div class="tela-inicial" id="tela">
+  <h1>Bem-vindo</h1>
+  <p>Clique em qualquer lugar para começar</p>
 
-    <div class="filtro-blur" id="blur"></div>
-    <div class="foco-trentini" id="trentini">TRENTINI</div>
+  <div class="filtro-blur" id="blur"></div>
+  <img src="LOGO.PNG" alt="Trentini Logo" class="logo-trentini" id="logoTrentini">
 
-    <div class="botoes" id="botoes">
-      <a href="https://www.instagram.com/trentini.perfumes" target="_blank">
-        <img src="instagram.png" alt="Instagram" /> Instagram
-      </a>
-      <a href="index.html">Entrar na Loja</a>
-    </div>
+  <div class="botoes" id="botoes">
+    <a href="https://www.instagram.com/trentini.perfumes" target="_blank">
+      <img src="instagram.png" alt="Instagram"> Instagram
+    </a>
+    <a href="index.html">Entrar na Loja</a>
   </div>
+</div>
 
-  <audio id="som1" src="spraying-perfume_0KMM3qt.mp3" preload="auto"></audio>
-  <audio id="som2" src="spraying-perfume_0KMM3qt.mp3" preload="auto"></audio>
+<audio id="som1" src="spraying-perfume_0KMM3qt.mp3" preload="auto"></audio>
+<audio id="som2" src="spraying-perfume_0KMM3qt.mp3" preload="auto"></audio>
 
-  <script>
-    const som1 = document.getElementById('som1');
-    const som2 = document.getElementById('som2');
-    const blur = document.getElementById('blur');
-    const trentini = document.getElementById('trentini');
-    const botoes = document.getElementById('botoes');
-    const tela = document.getElementById('tela');
+<script>
+  const som1 = document.getElementById('som1');
+  const som2 = document.getElementById('som2');
+  const blur = document.getElementById('blur');
+  const logoTrentini = document.getElementById('logoTrentini');
+  const botoes = document.getElementById('botoes');
 
-    tela.addEventListener('click', () => {
-      blur.style.opacity = '1';
-      trentini.style.display = 'block';
+  tela.addEventListener('click', () => {
+    blur.style.opacity = '1';
+    logoTrentini.style.display = 'block';
 
-      som1.play();
-      setTimeout(() => {
-        som2.currentTime = 0;
-        som2.play();
-      }, 300);
+    som1.play();
+    setTimeout(() => {
+      som2.currentTime = 0;
+      som2.play();
+    }, 300);
 
-      // Esconde o nome e mostra os botões após 2s
-      setTimeout(() => {
-        trentini.style.display = 'none';
-        botoes.style.display = 'flex';
-      }, 2000);
-    });
-  </script>
+    setTimeout(() => {
+      logoTrentini.style.display = 'none';
+      botoes.style.display = 'flex';
+    }, 2000);
+  });
+</script>
 
 </body>
 </html>

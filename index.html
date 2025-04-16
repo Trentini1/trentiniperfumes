@@ -5,127 +5,162 @@
   <title>Trentini Perfumes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      font-family: sans-serif; 
-      margin: 0; 
-      background: url('fundo.png') no-repeat center center fixed; 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      overflow: hidden;
+    }
+
+    /* Tela de Boas-vindas */
+    .splash {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(0,0,0,0.6)),
+                  url('fundo.png') no-repeat center center;
       background-size: cover;
-      color: #333; 
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      z-index: 10;
+      animation: fadeIn 1.5s ease forwards;
     }
 
-    /* Camada de fundo com opacidade */
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.3); /* Aqui definimos a transparência */
-      z-index: -1; /* Coloca a camada atrás de outros elementos */
+    .splash img {
+      width: 250px;
+      max-width: 80%;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      animation: scaleUp 1s ease forwards;
     }
 
-    header, footer { 
-      background: rgba(44, 44, 44, 0.8); 
-      color: white; 
-      text-align: center; 
-      padding: 20px; 
+    .splash h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      opacity: 0;
+      animation: fadeText 1s ease 1s forwards;
     }
-    .hero { 
-      padding: 60px 20px; 
-      text-align: center; 
-      background: rgba(232, 217, 195, 0.9); 
+
+    .splash p {
+      font-size: 1.2em;
+      margin-top: 10px;
+      opacity: 0.7;
+      animation: fadeText 1s ease 1.5s forwards;
     }
-    .hero h1 { font-size: 2.5em; }
-    .produtos { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-      gap: 20px; 
-      padding: 30px; 
+
+    /* Página Inicial */
+    .main-content {
+      display: none;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(to top left, rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+                  url('fundo.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 1s ease;
     }
-    .produto { 
-      background: white; 
-      border-radius: 10px; 
-      padding: 15px; 
-      box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+
+    .main-content h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
     }
-    .produto h3 { margin: 10px 0 5px; }
-    .produto p { font-size: 0.9em; color: #555; }
-    .produto strong { 
-      color: #000; 
-      display: block; 
-      margin-top: 10px; 
-      font-size: 1.1em; 
+
+    .main-content p {
+      font-size: 1.2em;
+      max-width: 600px;
+      opacity: 0.9;
     }
-    a.botao { 
-      background: #25D366; 
-      color: white; 
-      padding: 10px 20px; 
-      border-radius: 5px; 
-      text-decoration: none; 
-      display: inline-block; 
-      margin-top: 10px; 
+
+    a.botao {
+      margin-top: 30px;
+      background: #25D366;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+
+    a.botao:hover {
+      background: #1ea855;
+    }
+
+    /* Animações */
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeText {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scaleUp {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Trentini Perfumes</h1>
-  <p>Perfumes árabes e importados de alto padrão</p>
-</header>
-
-<section class="hero">
-  <h1>Descubra fragrâncias inesquecíveis</h1>
-  <p>Masculinos, femininos, unissex, Victoria's Secret e muito mais</p>
-</section>
-
-<section class="produtos">
-  <div class="produto">
-    <h3>LATTAFA ASSAD</h3>
-    <p>Amadeirado, doce e intenso. Lembra o Sauvage Elixir. Perfeito pra noite.</p>
-    <strong>R$ 239,99</strong>
+  <!-- Tela de Boas-Vindas -->
+  <div class="splash" id="splash">
+    <img src="logo.png" alt="Logo Trentini Perfumes"> <!-- Substitua com sua imagem -->
+    <h1>Bem-vindo à Trentini Perfumes</h1>
+    <p>Clique em qualquer lugar para começar</p>
   </div>
 
-  <div class="produto">
-    <h3>AL NOBLE WAZEER</h3>
-    <p>Doce, frutado e elegante. Chocolate, caramelo e frutas.</p>
-    <strong>R$ 239,90</strong>
+  <!-- Página Inicial -->
+  <div class="main-content" id="main">
+    <h1>Trentini Perfumes</h1>
+    <p>Fragrâncias árabes e importadas com personalidade. Perfumes de alto padrão para quem quer marcar presença.</p>
+    <a class="botao" href="loja.html">🌟 Entrar na Loja</a>
   </div>
 
-  <div class="produto">
-    <h3>LATTAFA KHAMRAH</h3>
-    <p>Doce, especiado e quente. Canela, tâmaras e baunilha.</p>
-    <strong>R$ 249,99</strong>
-  </div>
+  <script>
+    const splash = document.getElementById('splash');
+    const main = document.getElementById('main');
 
-  <div class="produto">
-    <h3>LATTAFA YARA</h3>
-    <p>Feminino doce e tropical. Orquídea, tangerina, frutas tropicais.</p>
-    <strong>R$ 239,99</strong>
-  </div>
-
-  <div class="produto">
-    <h3>KIT LATTAFA ASAD + ZANZIBAR</h3>
-    <p>Perfumes masculinos marcantes em kit especial.</p>
-    <strong>R$ 419,99</strong>
-  </div>
-
-  <div class="produto">
-    <h3>VICTORIA'S SECRET LOVE SPELL</h3>
-    <p>Loção corporal feminina. Toque sensual e adocicado.</p>
-    <strong>R$ 139,99</strong>
-  </div>
-</section>
-
-<footer>
-  <p>Fale com a gente no WhatsApp: <br>
-    <a class="botao" href="https://wa.me/5541995252161" target="_blank">📲 41 99525-2161</a>
-  </p>
-  <p>Siga no Instagram: <a href="https://www.instagram.com/trentini.perfumes" style="color: #fff;">@trentini.perfumes</a></p>
-  <p>&copy; 2025 Trentini Perfumes</p>
-</footer>
+    document.addEventListener('click', () => {
+      splash.style.animation = 'fadeOut 1s ease forwards';
+      setTimeout(() => {
+        splash.style.display = 'none';
+        main.style.display = 'flex';
+        setTimeout(() => {
+          main.style.opacity = 1;
+        }, 100);
+      }, 1000);
+    }, { once: true });
+  </script>
 
 </body>
 </html>

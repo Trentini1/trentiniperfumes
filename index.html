@@ -30,8 +30,8 @@
       background-color: rgba(0, 0, 0, 0.5);
       z-index: 5;
       opacity: 0;
-      transition: opacity 1s ease;
       pointer-events: none;
+      transition: opacity 1s ease;
     }
 
     .conteudo-central {
@@ -156,8 +156,10 @@
   const descricao = document.getElementById('descricao');
 
   function iniciarAnimacao() {
-    tela.removeEventListener('click', iniciarAnimacao); // Impede o clique repetido
+    // Evita repetição: remove o clique
+    tela.removeEventListener('click', iniciarAnimacao);
 
+    // Aplica o desfoque e exibe a logo
     blur.style.opacity = '1';
     logoTrentini.style.display = 'block';
 
@@ -167,15 +169,16 @@
       som2.play();
     }, 300);
 
-    // Esconde "Bem-vindo" e "Clique em qualquer lugar"
+    // Esconde os textos "Bem-vindo" e "Clique em qualquer lugar"
     bemVindo.style.opacity = '0';
     descricao.style.opacity = '0';
 
+    // Aguarda 2 segundos para esconder a logo e mostrar os botões
     setTimeout(() => {
       logoTrentini.style.display = 'none';
       botoes.style.display = 'flex';
-      blur.style.opacity = '0';  // Esconde o desfoque após logo desaparecer
-    }, 2000); // Atraso de 2 segundos para esconder a logo e mostrar os botões
+      blur.style.opacity = '0';  // Esconde o desfoque após a logo desaparecer
+    }, 2000); // Atraso de 2 segundos para garantir a transição suave
   }
 
   // Garante que o clique na tela inicie a animação

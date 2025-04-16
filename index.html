@@ -127,8 +127,8 @@
 
 <div class="tela-inicial" id="tela">
   <div class="conteudo-central">
-    <h1>Bem-vindo</h1>
-    <p>Clique em qualquer lugar para começar</p>
+    <h1 id="bem-vindo">Bem-vindo</h1>
+    <p id="descricao">Clique em qualquer lugar para começar</p>
 
     <div class="filtro-blur" id="blur"></div>
     <img src="LOGO.PNG" alt="Trentini Logo" class="logo-trentini" id="logoTrentini">
@@ -152,6 +152,8 @@
   const logoTrentini = document.getElementById('logoTrentini');
   const botoes = document.getElementById('botoes');
   const tela = document.getElementById('tela');
+  const bemVindo = document.getElementById('bem-vindo');
+  const descricao = document.getElementById('descricao');
 
   function iniciarAnimacao() {
     tela.removeEventListener('click', iniciarAnimacao);
@@ -163,7 +165,11 @@
     setTimeout(() => {
       som2.currentTime = 0;
       som2.play();
-    }, 400);
+    }, 300);
+
+    // Esconde "Bem-vindo" e "Clique em qualquer lugar"
+    bemVindo.style.opacity = '0';
+    descricao.style.opacity = '0';
 
     setTimeout(() => {
       logoTrentini.style.display = 'none';
@@ -172,8 +178,4 @@
     }, 2000);
   }
 
-  tela.addEventListener('click', iniciarAnimacao);
-</script>
-
-</body>
-</html>
+  tela.addEventListener

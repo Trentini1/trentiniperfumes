@@ -19,7 +19,7 @@
       color: white;
       position: relative;
       overflow: hidden;
-      background-color: rgba(0, 0, 0, 0.3); /* Transparência no fundo */
+      background-color: rgba(0, 0, 0, 0.3);
     }
 
     .tela-inicial h1, .tela-inicial p {
@@ -60,11 +60,7 @@
       padding: 25px 50px;
       border-radius: 20px;
       display: none;
-      animation: popIn 1s ease forwards;
-    }
-
-    .foco-trentini-sair {
-      animation: popOut 1s ease forwards; /* Animação de saída */
+      animation: popInOut 2s ease forwards;
     }
 
     .botoes {
@@ -87,6 +83,14 @@
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .botoes a img {
+      width: 24px;
+      height: 24px;
     }
 
     .botoes a:hover {
@@ -99,13 +103,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes popIn {
+    @keyframes popInOut {
       0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
-
-    @keyframes popOut {
-      0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      25% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      75% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
       100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
     }
   </style>
@@ -120,19 +121,19 @@
   <div class="foco-trentini" id="trentini">TRENTINI</div>
 
   <div class="botoes" id="botoes">
-    <a href="https://www.instagram.com/trentini.perfumes" target="_blank">Instagram</a>
+    <a href="https://www.instagram.com/trentini.perfumes" target="_blank">
+      <img src="instagram.png" alt="Instagram"> Instagram
+    </a>
     <a href="index.html">Entrar na Loja</a>
   </div>
 </div>
 
-<!-- Som do perfume sendo borrifado (deve estar no mesmo diretório) -->
 <audio id="som1" src="spraying-perfume_0KMM3qt.mp3" preload="auto"></audio>
 <audio id="som2" src="spraying-perfume_0KMM3qt.mp3" preload="auto"></audio>
 
 <script>
   const som1 = document.getElementById('som1');
   const som2 = document.getElementById('som2');
-  const tela = document.getElementById('tela');
   const blur = document.getElementById('blur');
   const trentini = document.getElementById('trentini');
   const botoes = document.getElementById('botoes');
@@ -141,22 +142,17 @@
     blur.style.opacity = '1';
     trentini.style.display = 'block';
 
-    // Tocar o som 2x, alternando entre as duas instâncias de áudio
     som1.play();
     setTimeout(() => {
-      som2.currentTime = 0;  // Resetando o segundo áudio
+      som2.currentTime = 0;
       som2.play();
-    }, 300); // Intervalo de 300ms
+    }, 300);
 
-    // Exibir os botões após a animação do nome
+    // Esconder 'TRENTINI' depois de 2s e mostrar botões
     setTimeout(() => {
-      trentini.classList.add('foco-trentini-sair');  // Iniciar animação de saída
-    }, 1000); // Espera 1 segundo para começar a animação de saída
-
-    setTimeout(() => {
-      trentini.style.display = 'none'; // Esconde o nome após a animação
-      botoes.style.display = 'flex'; // Exibe os botões
-    }, 2000); // Espera 2 segundos para garantir que a animação de saída tenha terminado
+      trentini.style.display = 'none';
+      botoes.style.display = 'flex';
+    }, 2000);
   });
 </script>
 

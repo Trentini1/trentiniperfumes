@@ -13,15 +13,16 @@
       height: 100vh;
       background: url('fundo.png') no-repeat center center/cover;
       display: flex;
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
       color: white;
       position: relative;
       overflow: hidden;
     }
 
-    .tela-inicial h1, .tela-inicial p {
+    .tela-inicial h1 {
+      margin-top: 40px; /* Mais alto */
       z-index: 2;
       animation: fadeIn 2s ease forwards;
       opacity: 0;
@@ -29,10 +30,13 @@
     }
 
     .tela-inicial p {
-      margin-top: 15px;
+      margin-top: 10px;
       font-size: 1.2em;
       opacity: 0.8;
+      animation: fadeIn 2s ease forwards;
       animation-delay: 1s;
+      z-index: 2;
+      text-align: center;
     }
 
     .filtro-blur {
@@ -50,11 +54,11 @@
 
     .logo-trentini {
       position: absolute;
-      top: 38%;
+      top: 47%; /* Logo mais baixa */
       left: 50%;
       transform: translate(-50%, -50%) scale(0.9);
       z-index: 6;
-      width: 250px;
+      width: 240px;
       height: auto;
       display: none;
       animation: popInOut 2s ease forwards;
@@ -68,7 +72,7 @@
 
     .botoes {
       position: absolute;
-      top: 68%;
+      top: 70%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 7;
@@ -122,7 +126,7 @@
     }
 
     @media (max-width: 600px) {
-      .logo-trentini { top: 35%; }
+      .logo-trentini { top: 48%; }
       .botoes { top: 72%; }
     }
   </style>

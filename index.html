@@ -11,14 +11,13 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    body, html {
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      background: #000;
       overflow: hidden;
     }
 
-    /* Tela de Boas-vindas */
+    /* Tela de Boas-Vindas */
     .splash {
       position: fixed;
       width: 100%;
@@ -33,133 +32,99 @@
       text-align: center;
       color: white;
       z-index: 10;
-      animation: fadeIn 1.5s ease forwards;
-    }
-
-    .splash img {
-      width: 250px;
-      max-width: 80%;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
-      animation: scaleUp 1s ease forwards;
+      transition: opacity 1s ease;
     }
 
     .splash h1 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-      opacity: 0;
-      animation: fadeText 1s ease 1s forwards;
+      font-size: 3em;
+      margin-bottom: 20px;
+      opacity: 0.8;
+      animation: fadeText 1.5s ease;
     }
 
     .splash p {
       font-size: 1.2em;
-      margin-top: 10px;
       opacity: 0.7;
-      animation: fadeText 1s ease 1.5s forwards;
+      animation: fadeText 1.5s ease 1s;
     }
 
-    /* Página Inicial */
-    .main-content {
-      display: none;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(to top left, rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
-                  url('fundo.png') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      padding: 20px;
-      text-align: center;
+    .caixa-perfume {
+      width: 250px;
+      height: 300px;
+      background-color: #333;
+      border-radius: 20px;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-
-    .main-content h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
-
-    .main-content p {
-      font-size: 1.2em;
-      max-width: 600px;
-      opacity: 0.9;
-    }
-
-    a.botao {
-      margin-top: 30px;
-      background: #25D366;
       color: white;
-      padding: 15px 30px;
-      font-size: 1.1em;
-      border-radius: 30px;
-      text-decoration: none;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      transition: background 0.3s ease;
+      font-size: 1.2em;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      opacity: 0;
+      animation: showBox 2s ease forwards;
+      position: relative;
     }
 
-    a.botao:hover {
-      background: #1ea855;
+    .caixa-perfume img {
+      width: 80%;
+      transition: opacity 1s ease-in-out;
     }
 
-    /* Animações */
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        transform: scale(1.1);
-      }
+    /* Caixa de perfume que abre */
+    .caixa-aberta {
+      width: 250px;
+      height: 250px;
+      border-radius: 20px;
+      transition: all 1s ease;
+      transform: scale(1.1);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
+    /* Efeitos de Fade-in */
     @keyframes fadeText {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes scaleUp {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    @keyframes showBox {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
+
   </style>
 </head>
 <body>
 
   <!-- Tela de Boas-Vindas -->
   <div class="splash" id="splash">
-    <img src="logo.png" alt="Logo Trentini Perfumes"> <!-- Substitua com sua imagem -->
     <h1>Bem-vindo à Trentini Perfumes</h1>
-    <p>Clique em qualquer lugar para começar</p>
-  </div>
+    <p>Clique em qualquer lugar para descobrir nossas fragrâncias</p>
 
-  <!-- Página Inicial -->
-  <div class="main-content" id="main">
-    <h1>Trentini Perfumes</h1>
-    <p>Fragrâncias árabes e importadas com personalidade. Perfumes de alto padrão para quem quer marcar presença.</p>
-    <a class="botao" href="loja.html">🌟 Entrar na Loja</a>
+    <!-- Caixa de Perfume (inicialmente fechada) -->
+    <div class="caixa-perfume" id="caixa-perfume">
+      <p>Clique para abrir</p>
+      <img src="caixa-perfume.jpg" id="imagem-caixa" alt="Caixa de Perfume" style="display:none;">
+    </div>
+
   </div>
 
   <script>
+    const caixaPerfume = document.getElementById('caixa-perfume');
+    const imagemCaixa = document.getElementById('imagem-caixa');
     const splash = document.getElementById('splash');
-    const main = document.getElementById('main');
 
+    // Ação de clique na tela
     document.addEventListener('click', () => {
-      splash.style.animation = 'fadeOut 1s ease forwards';
+      // Animação de abrir a caixa de perfume
+      caixaPerfume.classList.add('caixa-aberta');
+      imagemCaixa.style.display = 'block';
+      imagemCaixa.style.opacity = 1;
+
+      // Depois de abrir, ocultar a tela inicial
       setTimeout(() => {
         splash.style.display = 'none';
-        main.style.display = 'flex';
-        setTimeout(() => {
-          main.style.opacity = 1;
-        }, 100);
-      }, 1000);
-    }, { once: true });
+      }, 1000); // Tempo de animação de abertura
+    });
   </script>
 
 </body>

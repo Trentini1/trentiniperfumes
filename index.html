@@ -117,30 +117,23 @@
 </div>
 
 <!-- Som do perfume sendo borrifado (deve estar no mesmo diretório) -->
-<audio id="som" src="spraying-perfume_0KMM3qt.mp3" preload="auto"></audio>
+<audio id="som1" src="spraying-perfume_0KMM3qt.mp3" preload="auto"></audio>
+<audio id="som2" src="spraying-perfume_0KMM3qt.mp3" preload="auto"></audio>
 
 <script>
-  const tela = document.getElementById('tela');
-  const blur = document.getElementById('blur');
-  const trentini = document.getElementById('trentini');
-  const botoes = document.getElementById('botoes');
-  const som = document.getElementById('som');
+  const som1 = document.getElementById('som1');
+  const som2 = document.getElementById('som2');
 
   tela.addEventListener('click', () => {
     blur.style.opacity = '1';
     trentini.style.display = 'block';
 
-    // Tocar o som 2x com pequeno intervalo
-    som.play();
+    // Tocar o som 2x, alternando entre as duas instâncias de áudio
+    som1.play();
     setTimeout(() => {
-      som.currentTime = 0;
-      som.play();
-    }, 300); // espera 1s antes de tocar de novo
-
-    setTimeout(() => {
-      botoes.style.display = 'flex';
-      botoes.style.animation = 'fadeIn 1s ease forwards';
-    }, 2000);
+      som2.currentTime = 0;  // Resetando o segundo áudio
+      som2.play();
+    }, 300); // Intervalo de 300ms
   });
 </script>
 

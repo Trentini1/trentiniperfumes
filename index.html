@@ -63,6 +63,10 @@
       animation: popIn 1s ease forwards;
     }
 
+    .foco-trentini-sair {
+      animation: popOut 1s ease forwards; /* Animação de saída */
+    }
+
     .botoes {
       position: absolute;
       bottom: 50px;
@@ -99,6 +103,11 @@
       0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
       100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
+
+    @keyframes popOut {
+      0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    }
   </style>
 </head>
 <body>
@@ -123,7 +132,7 @@
 <script>
   const som1 = document.getElementById('som1');
   const som2 = document.getElementById('som2');
-  const tela = document.getElementById('tela');  // Corrigido aqui, referenciando a tela corretamente
+  const tela = document.getElementById('tela');
   const blur = document.getElementById('blur');
   const trentini = document.getElementById('trentini');
   const botoes = document.getElementById('botoes');
@@ -139,9 +148,15 @@
       som2.play();
     }, 300); // Intervalo de 300ms
 
-    // Exibir os botões e animar
-    botoes.style.display = 'flex';
-    botoes.style.animation = 'fadeIn 1s ease forwards';
+    // Exibir os botões após a animação do nome
+    setTimeout(() => {
+      trentini.classList.add('foco-trentini-sair');  // Iniciar animação de saída
+    }, 1000); // Espera 1 segundo para começar a animação de saída
+
+    setTimeout(() => {
+      trentini.style.display = 'none'; // Esconde o nome após a animação
+      botoes.style.display = 'flex'; // Exibe os botões
+    }, 2000); // Espera 2 segundos para garantir que a animação de saída tenha terminado
   });
 </script>
 

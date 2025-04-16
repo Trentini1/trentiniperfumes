@@ -64,53 +64,42 @@
     }
 
     .botoes {
-      position: absolute;
-      bottom: 50px;
+      position: fixed;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       z-index: 7;
-      gap: 20px;
       display: none;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
       opacity: 0;
       animation: fadeIn 1s ease forwards;
     }
 
-     .botoes {
-    position: fixed;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 7;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-  }
+    .botoes a {
+      padding: 14px 28px;
+      background: #fff;
+      color: #000;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1em;
+    }
 
-  .botoes a {
-    padding: 14px 28px;
-    background: #fff;
-    color: #000;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.1em;
-  }
+    .botoes a img {
+      width: 26px;
+      height: 26px;
+    }
 
-  .botoes a img {
-    width: 26px;
-    height: 26px;
-  }
-
-  .botoes a:hover {
-    background: #000;
-    color: #fff;
+    .botoes a:hover {
+      background: #000;
+      color: #fff;
+    }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }

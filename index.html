@@ -19,6 +19,7 @@
       color: white;
       position: relative;
       overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.3); /* Transparência no fundo */
     }
 
     .tela-inicial h1, .tela-inicial p {
@@ -134,7 +135,7 @@
     setTimeout(() => {
       som.currentTime = 0;
       som.play();
-    }, 1000); // espera 1s antes de tocar de novo
+    }, 500); // espera 1s antes de tocar de novo
 
     setTimeout(() => {
       botoes.style.display = 'flex';

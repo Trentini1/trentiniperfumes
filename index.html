@@ -123,6 +123,10 @@
 <script>
   const som1 = document.getElementById('som1');
   const som2 = document.getElementById('som2');
+  const tela = document.getElementById('tela');  // Corrigido aqui, referenciando a tela corretamente
+  const blur = document.getElementById('blur');
+  const trentini = document.getElementById('trentini');
+  const botoes = document.getElementById('botoes');
 
   tela.addEventListener('click', () => {
     blur.style.opacity = '1';
@@ -134,6 +138,10 @@
       som2.currentTime = 0;  // Resetando o segundo áudio
       som2.play();
     }, 300); // Intervalo de 300ms
+
+    // Exibir os botões e animar
+    botoes.style.display = 'flex';
+    botoes.style.animation = 'fadeIn 1s ease forwards';
   });
 </script>
 

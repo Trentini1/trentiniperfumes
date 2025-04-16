@@ -156,7 +156,7 @@
   const descricao = document.getElementById('descricao');
 
   function iniciarAnimacao() {
-    tela.removeEventListener('click', iniciarAnimacao);
+    tela.removeEventListener('click', iniciarAnimacao); // Impede o clique repetido
 
     blur.style.opacity = '1';
     logoTrentini.style.display = 'block';
@@ -175,7 +175,12 @@
       logoTrentini.style.display = 'none';
       botoes.style.display = 'flex';
       blur.style.opacity = '0';  // Esconde o desfoque após logo desaparecer
-    }, 2000);
+    }, 2000); // Atraso de 2 segundos para esconder a logo e mostrar os botões
   }
 
-  tela.addEventListener
+  // Garante que o clique na tela inicie a animação
+  tela.addEventListener('click', iniciarAnimacao);
+</script>
+
+</body>
+</html>

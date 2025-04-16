@@ -19,7 +19,6 @@
       color: white;
       position: relative;
       overflow: hidden;
-      background-color: rgba(0, 0, 0, 0.3);
     }
 
     .tela-inicial h1, .tela-inicial p {
@@ -50,7 +49,7 @@
 
     .logo-trentini {
       position: absolute;
-      top: 40%; /* Subiu mais */
+      top: 35%; /* Subida */
       left: 50%;
       transform: translate(-50%, -50%) scale(0.8);
       z-index: 6;
@@ -67,44 +66,38 @@
     }
 
     .botoes {
-      position: fixed;
-      top: 58%; /* Subiu mais */
-      left: 42%; /* Mais à esquerda */
+      position: absolute;
+      top: 60%; /* Posição central real */
+      left: 50%;
       transform: translate(-50%, -50%);
       z-index: 7;
       display: none;
       flex-direction: column;
       align-items: center;
-      gap: 30px;
+      gap: 20px;
       opacity: 0;
       animation: fadeIn 1s ease forwards;
-      max-width: 90%;
+      width: 80%;
+      max-width: 300px;
     }
 
     .botoes a {
-      padding: 18px 36px;
-      background: #fff;
+      padding: 16px 28px;
+      background: linear-gradient(135deg, #ffffff, #f0f0f0);
       color: #000;
-      border-radius: 40px;
+      border-radius: 50px;
       text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 1.3em;
-      width: 100%;
-      justify-content: center;
-    }
-
-    .botoes a img {
-      width: 26px;
-      height: 26px;
+      font-weight: 600;
+      font-size: 1.1em;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
     }
 
     .botoes a:hover {
       background: #000;
       color: #fff;
+      transform: scale(1.05);
     }
 
     @keyframes fadeIn {
@@ -120,10 +113,8 @@
     }
 
     @media (max-width: 600px) {
-      .botoes {
-        left: 38%; /* Mais à esquerda no celular */
-        top: 60%;  /* Pequena subida */
-      }
+      .logo-trentini { top: 30%; }
+      .botoes { top: 65%; }
     }
   </style>
 </head>
@@ -137,10 +128,8 @@
   <img src="LOGO.PNG" alt="Trentini Logo" class="logo-trentini" id="logoTrentini">
 
   <div class="botoes" id="botoes">
-    <a href="https://www.instagram.com/trentini.perfumes" target="_blank">
-      <img src="instagram.png" alt="Instagram"> Instagram
-    </a>
-    <a href="index.html">Entrar na Loja</a>
+    <a href="https://www.instagram.com/trentini.perfumes" target="_blank">🌸 Instagram</a>
+    <a href="index.html">🛒 Entrar na Loja</a>
   </div>
 </div>
 
@@ -156,7 +145,6 @@
   const tela = document.getElementById('tela');
 
   function iniciarAnimacao() {
-    // Evita repetição: remove o clique
     tela.removeEventListener('click', iniciarAnimacao);
 
     blur.style.opacity = '1';

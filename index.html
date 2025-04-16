@@ -13,9 +13,9 @@
       height: 100vh;
       background: url('fundo.png') no-repeat center center/cover;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       color: white;
       position: relative;
       overflow: hidden;
@@ -25,6 +25,7 @@
       z-index: 2;
       animation: fadeIn 2s ease forwards;
       opacity: 0;
+      text-align: center;
     }
 
     .tela-inicial p {
@@ -49,9 +50,9 @@
 
     .logo-trentini {
       position: absolute;
-      top: 35%; /* Subida */
+      top: 38%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(0.8);
+      transform: translate(-50%, -50%) scale(0.9);
       z-index: 6;
       width: 250px;
       height: auto;
@@ -67,7 +68,7 @@
 
     .botoes {
       position: absolute;
-      top: 60%; /* Posição central real */
+      top: 68%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 7;
@@ -82,16 +83,24 @@
     }
 
     .botoes a {
-      padding: 16px 28px;
-      background: linear-gradient(135deg, #ffffff, #f0f0f0);
+      padding: 14px 24px;
+      background: white;
       color: #000;
-      border-radius: 50px;
+      border-radius: 40px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       font-size: 1.1em;
-      text-align: center;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       transition: all 0.3s ease;
+    }
+
+    .botoes a img {
+      width: 24px;
+      height: 24px;
     }
 
     .botoes a:hover {
@@ -113,8 +122,8 @@
     }
 
     @media (max-width: 600px) {
-      .logo-trentini { top: 30%; }
-      .botoes { top: 65%; }
+      .logo-trentini { top: 35%; }
+      .botoes { top: 72%; }
     }
   </style>
 </head>
@@ -128,7 +137,9 @@
   <img src="LOGO.PNG" alt="Trentini Logo" class="logo-trentini" id="logoTrentini">
 
   <div class="botoes" id="botoes">
-    <a href="https://www.instagram.com/trentini.perfumes" target="_blank">🌸 Instagram</a>
+    <a href="https://www.instagram.com/trentini.perfumes" target="_blank">
+      <img src="instagram.png" alt="Instagram"> Instagram
+    </a>
     <a href="index.html">🛒 Entrar na Loja</a>
   </div>
 </div>

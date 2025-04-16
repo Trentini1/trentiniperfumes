@@ -163,11 +163,12 @@
     setTimeout(() => {
       som2.currentTime = 0;
       som2.play();
-    }, 300);
+    }, 400);
 
     setTimeout(() => {
       logoTrentini.style.display = 'none';
       botoes.style.display = 'flex';
+      blur.style.opacity = '0';  // Esconde o desfoque após logo desaparecer
     }, 2000);
   }
 

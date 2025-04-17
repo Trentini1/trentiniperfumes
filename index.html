@@ -37,17 +37,17 @@
     }
 
     .filtro-blur {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(12px);
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 5;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 1s ease;
-    }
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(12px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  opacity: 1; /* <- ALTERADO de 0 para 1 */
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
 
     .conteudo-central {
       position: relative;
@@ -180,7 +180,7 @@
     tela.removeEventListener('click', iniciarAnimacao);
 
     // Aplica o desfoque e exibe a logo
-    blur.style.opacity = '1';
+   
     logoTrentini.style.display = 'block';
 
     som1.play();

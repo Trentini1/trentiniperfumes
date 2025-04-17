@@ -108,36 +108,43 @@
   </div>
 
   <script>
-    const carousel = document.getElementById('carousel');
-    let currentIndex = 0;
+  const carousel = document.getElementById('carousel');
+  let currentIndex = 0;
 
-    function updateCarousel() {
-      const imgs = carousel.querySelectorAll('img');
-      imgs.forEach(img => img.classList.remove('active'));
-      imgs[currentIndex].classList.add('active');
-      const offset = (carousel.offsetWidth / 2) - (imgs[currentIndex].offsetWidth / 2);
-      let totalWidth = 0;
-      for (let i = 0; i < currentIndex; i++) {
-        totalWidth += imgs[i].offsetWidth + 30; // 30 = gap
-      }
-      carousel.style.transform = `translateX(${-totalWidth + offset}px)`;
+  function updateCarousel() {
+    const imgs = carousel.querySelectorAll('img');
+    imgs.forEach(img => img.classList.remove('active'));
+    imgs[currentIndex].classList.add('active');
+
+    const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+    const activeImg = imgs[currentIndex];
+    const imgWidth = activeImg.offsetWidth;
+
+    // Calcular posição total dos itens anteriores
+    let totalWidth = 0;
+    for (let i = 0; i < currentIndex; i++) {
+      totalWidth += imgs[i].offsetWidth + 30; // 30 = gap
     }
 
-    function nextSlide() {
-      const imgs = carousel.querySelectorAll('img');
-      currentIndex = (currentIndex + 1) % imgs.length;
-      updateCarousel();
-    }
+    const translateX = totalWidth - (containerWidth / 2) + (imgWidth / 2);
+    carousel.style.transform = `translateX(-${translateX}px)`;
+  }
 
-    function prevSlide() {
-      const imgs = carousel.querySelectorAll('img');
-      currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
-      updateCarousel();
-    }
+  function nextSlide() {
+    const imgs = carousel.querySelectorAll('img');
+    currentIndex = (currentIndex + 1) % imgs.length;
+    updateCarousel();
+  }
 
-    window.addEventListener('load', updateCarousel);
-    window.addEventListener('resize', updateCarousel);
-  </script>
+  function prevSlide() {
+    const imgs = carousel.querySelectorAll('img');
+    currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+    updateCarousel();
+  }
+
+  window.addEventListener('load', updateCarousel);
+  window.addEventListener('resize', updateCarousel);
+</script>
 
 </body>
 </html>

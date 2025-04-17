@@ -38,15 +38,17 @@
 
     .filtro-blur {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(12px);
-  background-color: rgba(0, 0, 0, 0.5);
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(15px);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 5;
-  opacity: 1; /* <- ALTERADO de 0 para 1 */
+  opacity: 1;
+  border-radius: 50%;
   pointer-events: none;
-  transition: opacity 1s ease;
 }
 
     .conteudo-central {
@@ -175,35 +177,27 @@
   const bemVindo = document.getElementById('bem-vindo');
   const descricao = document.getElementById('descricao');
 
-  function iniciarAnimacao() {
-    // Evita repetição: remove o clique
-    tela.removeEventListener('click', iniciarAnimacao);
+ function iniciarAnimacao() {
+  tela.removeEventListener('click', iniciarAnimacao);
 
-    // Aplica o desfoque e exibe a logo
-   
-    logoTrentini.style.display = 'block';
+  blur.style.opacity = '1'; // 👈 Ativa o blur
+  logoTrentini.style.display = 'block';
 
-    som1.play();
-    setTimeout(() => {
-      som2.currentTime = 0;
-      som2.play();
-    }, 300);
+  som1.play();
+  setTimeout(() => {
+    som2.currentTime = 0;
+    som2.play();
+  }, 300);
 
-    // Esconde os textos "Bem-vindo" e "Clique em qualquer lugar"
-   bemVindo.style.display = 'none';
-descricao.style.display = 'none';
+  bemVindo.style.display = 'none';
+  descricao.style.display = 'none';
 
-    // Aguarda 2 segundos para esconder a logo e mostrar os botões
-    setTimeout(() => {
-      logoTrentini.style.display = 'none';
-      botoes.style.display = 'flex';
-      blur.style.opacity = '0';  // Esconde o desfoque após a logo desaparecer
-    }, 2000); // Atraso de 2 segundos para garantir a transição suave
-  }
-
-  // Garante que o clique na tela inicie a animação
-  tela.addEventListener('click', iniciarAnimacao);
-</script>
+  setTimeout(() => {
+    logoTrentini.style.display = 'none';
+    botoes.style.display = 'flex';
+    blur.style.opacity = '0';
+  }, 2000);
+}
 
 </body>
 </html>

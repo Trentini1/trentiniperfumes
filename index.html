@@ -5,52 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-   body, html {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-  font-family: 'Segoe UI', sans-serif;
-}
-  .tela-inicial {
-  width: 100%;
-  height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('fundo1.jpg') no-repeat center center/cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
+    body, html {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .tela-inicial {
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('fundo1.jpg') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
     .tela-inicial h1, .tela-inicial p {
       z-index: 2;
       animation: fadeIn 2s ease forwards;
       opacity: 0;
     }
-
     .tela-inicial p {
       margin-top: 15px;
       font-size: 1.2em;
       opacity: 0.8;
       animation-delay: 1s;
     }
-
     .filtro-blur {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  height: 300px;
-  transform: translate(-50%, -50%);
-  backdrop-filter: blur(15px);
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 5;
-  opacity: 1;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      transform: translate(-50%, -50%);
+      backdrop-filter: blur(15px);
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 5;
+      opacity: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    .logo-trentini {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 6;
+      width: 250px;
+      height: auto;
+      display: none;
+    }
     .conteudo-central {
       position: relative;
       z-index: 6;
@@ -59,38 +67,13 @@
       align-items: center;
       gap: 20px;
     }
-
-    .conteudo-central h1 {
-      font-size: 2.5em;
-      animation: fadeIn 2s ease forwards;
-      opacity: 0;
-    }
-
-    .conteudo-central p {
-      font-size: 1.1em;
-      animation: fadeIn 2s ease forwards;
-      animation-delay: 0.5s;
-      opacity: 0;
-    }
-
-   .logo-trentini {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 6;
-  width: 250px;
-  height: auto;
-  display: block;
-}
     .botoes {
       display: none;
       flex-direction: column;
       gap: 20px;
-      margin-top: 50px; /* Subido um pouco mais */
+      margin-top: 50px;
       animation: fadeIn 1s ease forwards;
     }
-
     .botoes a {
       padding: 14px 24px;
       background: white;
@@ -106,39 +89,28 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       transition: all 0.3s ease;
     }
-
     .botoes a img {
       width: 24px;
       height: 24px;
     }
-
     .botoes a:hover {
       background: #000;
       color: #fff;
       transform: scale(1.05);
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    @keyframes popInOut {
-      0% { opacity: 0; transform: scale(0.8); }
-      25% { opacity: 1; transform: scale(1); }
-      75% { opacity: 1; transform: scale(1); }
-      100% { opacity: 0; transform: scale(0.8); }
-    }
-
     @media (max-width: 600px) {
       .conteudo-central h1 {
-        font-size: 2em; /* Ajustado para celular */
+        font-size: 2em;
       }
       .conteudo-central p {
         font-size: 1em;
       }
       .logo-trentini {
-        width: 200px; /* Ajustado para celular */
+        width: 200px;
       }
     }
   </style>
@@ -147,8 +119,6 @@
 
 <div class="tela-inicial" id="tela">
   <div class="filtro-blur" id="blur"></div>
-
-  <!-- 👇 AQUI: a logo entra direto na tela -->
   <img src="LOGO.PNG" alt="Trentini Logo" class="logo-trentini" id="logoTrentini">
 
   <div class="conteudo-central">
@@ -177,27 +147,33 @@
   const bemVindo = document.getElementById('bem-vindo');
   const descricao = document.getElementById('descricao');
 
- function iniciarAnimacao() {
-  tela.removeEventListener('click', iniciarAnimacao);
+  function iniciarAnimacao() {
+    tela.removeEventListener('click', iniciarAnimacao);
 
-  blur.style.opacity = '1'; // 👈 Ativa o blur
-  logoTrentini.style.display = 'block';
+    // Ativa o blur e a logo
+    blur.style.opacity = '1';
+    logoTrentini.style.display = 'block';
 
-  som1.play();
-  setTimeout(() => {
-    som2.currentTime = 0;
-    som2.play();
-  }, 300);
+    som1.play();
+    setTimeout(() => {
+      som2.currentTime = 0;
+      som2.play();
+    }, 300);
 
-  bemVindo.style.display = 'none';
-  descricao.style.display = 'none';
+    // Esconde os textos "Bem-vindo" e "Clique"
+    bemVindo.style.display = 'none';
+    descricao.style.display = 'none';
 
-  setTimeout(() => {
-    logoTrentini.style.display = 'none';
-    botoes.style.display = 'flex';
-    blur.style.opacity = '0';
-  }, 2000);
-}
+    // Após 2s, tira a logo, tira o blur e mostra os botões
+    setTimeout(() => {
+      logoTrentini.style.display = 'none';
+      blur.style.opacity = '0';
+      botoes.style.display = 'flex';
+    }, 2000);
+  }
+
+  tela.addEventListener('click', iniciarAnimacao);
+</script>
 
 </body>
 </html>

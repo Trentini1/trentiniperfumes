@@ -15,8 +15,8 @@
     html {
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
       background: #000;
+      overflow: hidden;
     }
 
     .navbar {
@@ -91,26 +91,32 @@
       z-index: 1;
     }
 
-    .categorias {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 30px;
-      z-index: 2;
-      overflow: hidden;
-      transition: transform 0.5s ease-in-out;
+    .categorias-wrapper {
       position: relative;
       width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .categorias {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
     }
 
     .categoria {
       width: 500px;
       height: 500px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin: 0 20px;
+      flex-shrink: 0;
+      filter: blur(4px);
       transition: transform 0.3s ease, filter 0.3s ease;
-      position: absolute;
+    }
+
+    .categoria.center {
+      transform: scale(1.1);
+      filter: none;
     }
 
     .categoria img {
@@ -119,18 +125,6 @@
       object-fit: cover;
     }
 
-    /* Efeito de foco para o botão central */
-    .categoria.center {
-      transform: scale(1.1);
-      filter: none;
-    }
-
-    /* Efeito de desfoque para os botões fora do centro */
-    .categoria:not(.center) {
-      filter: blur(4px);
-    }
-
-    /* Botão de navegação */
     .button-nav {
       position: absolute;
       top: 50%;
@@ -151,115 +145,66 @@
     .button-next {
       right: 20px;
     }
-
-    /* Animação da entrada da página */
-    .fade-in {
-      animation: fadeIn 1.2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .categorias {
-        gap: 20px;
-      }
-
-      .categoria {
-        width: 400px;
-        height: 400px;
-      }
-    }
   </style>
 </head>
 <body>
-
-  <div class="navbar fade-in">
+  <div class="navbar">
     <div>
       <h1>Trentini <span>ترينتيني</span></h1>
     </div>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <div class="menu-rapido" id="menu">
-      <a href="contato.html">Contato</a>
-      <a href="https://www.instagram.com">Instagram</a>
+      <a href="#">Contato</a>
+      <a href="#">Instagram</a>
       <a href="#categorias">Categorias</a>
     </div>
   </div>
 
-  <div class="home fade-in">
+  <div class="home">
     <div class="overlay"></div>
-
-    <div class="categorias" id="categorias">
-      <a href="masculino.html" class="categoria">
-        <img src="botaomasculino.png" alt="Masculino">
-      </a>
-      <a href="feminino.html" class="categoria">
-        <img src="botaofeminino.png" alt="Feminino">
-      </a>
-      <a href="populares.html" class="categoria">
-        <img src="botao_populares.png" alt="Populares">
-      </a>
-      <a href="cremes.html" class="categoria">
-        <img src="botao_cremes.png" alt="Cremes">
-      </a>
+    <div class="categorias-wrapper">
+      <div class="button-nav button-prev" onclick="moveCarousel('prev')">◀</div>
+      <div class="categorias" id="categorias">
+        <a href="#" class="categoria"><img src="botaomasculino.png" alt="Masculino"></a>
+        <a href="#" class="categoria"><img src="botaofeminino.png" alt="Feminino"></a>
+        <a href="#" class="categoria"><img src="botao_populares.png" alt="Populares"></a>
+        <a href="#" class="categoria"><img src="botao_cremes.png" alt="Cremes"></a>
+      </div>
+      <div class="button-nav button-next" onclick="moveCarousel('next')">▶</div>
     </div>
-
-    <div class="button-nav button-prev" onclick="moveCarousel('prev')">◀</div>
-    <div class="button-nav button-next" onclick="moveCarousel('next')">▶</div>
   </div>
 
   <script>
-    let currentIndex = 0;
-
     const categorias = document.querySelectorAll('.categoria');
-    const categoriasContainer = document.getElementById('categorias');
-
-    function moveCarousel(direction) {
-      if (direction === 'next') {
-        currentIndex++;
-        if (currentIndex >= categorias.length) {
-          currentIndex = 0;
-        }
-      } else if (direction === 'prev') {
-        currentIndex--;
-        if (currentIndex < 0) {
-          currentIndex = categorias.length - 1;
-        }
-      }
-
-      updateCarousel();
-    }
+    let currentIndex = 0;
 
     function updateCarousel() {
       categorias.forEach((categoria, index) => {
         categoria.classList.remove('center');
-        if (index === currentIndex) {
-          categoria.classList.add('center');
-        }
       });
 
-      const offset = -currentIndex * 550; // Ajustado para o tamanho dos botões e distâncias
-      categoriasContainer.style.transform = `translateX(${offset}px)`;
+      categorias[currentIndex].classList.add('center');
+
+      const container = document.querySelector('.categorias');
+      const offset = -currentIndex * 540; // 500px + 2*20px de margin
+      container.style.transform = `translateX(${offset}px)`;
     }
 
-    // Inicializa o carrossel
-    window.onload = () => {
+    function moveCarousel(direction) {
+      if (direction === 'next') {
+        currentIndex = (currentIndex + 1) % categorias.length;
+      } else {
+        currentIndex = (currentIndex - 1 + categorias.length) % categorias.length;
+      }
       updateCarousel();
-    };
+    }
 
     function toggleMenu() {
-      const menu = document.getElementById("menu");
-      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+      const menu = document.getElementById('menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
     }
-  </script>
 
+    window.onload = updateCarousel;
+  </script>
 </body>
 </html>

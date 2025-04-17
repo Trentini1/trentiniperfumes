@@ -6,7 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; font-family: 'Segoe UI', sans-serif; }
+  html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
 
     .tela-inicial {
       width: 100%;
@@ -56,7 +60,7 @@
       opacity: 0;
     }
 
-   .logo-trentini {
+  .logo-trentini {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -67,16 +71,13 @@
   display: none;
   animation: popInOut 2s ease forwards;
 
-  /* Usar a máscara para o efeito suave de desfoque */
   -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
   mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
   mask-repeat: no-repeat;
   mask-size: cover;
 
-  /* Garantir que a logo não seja afetada pelo desfoque */
-  pointer-events: none; /* Impede interação com a logo durante a animação */
+  pointer-events: none;
 }
-
     .botoes {
       display: none;
       flex-direction: column;

@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trentini Perfumes</title>
+  <title>Perfumes Masculinos - Trentini Perfumes</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background: #000 url('fundohome.jpg') no-repeat center center;
-      background-size: cover;
+      background: #111;
       font-family: 'Segoe UI', sans-serif;
       color: white;
-      overflow-x: hidden;
     }
 
     header {
       background: rgba(0, 0, 0, 0.8);
-      padding: 15px 30px;
+      padding: 20px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -26,75 +24,80 @@
     .logo { font-weight: bold; }
     .menu-icon { cursor: pointer; font-size: 28px; }
 
-    .intro {
-      text-align: center;
-      margin-top: 80px;
-      padding: 20px;
-    }
-
-    .intro h1 {
-      font-size: 48px;
-      font-weight: bold;
-      text-shadow: 2px 2px 5px #000;
-    }
-
-    .intro p {
-      margin-top: 10px;
-      font-size: 20px;
-      color: #ccc;
-    }
-
-    .categoria-container {
-      position: relative;
-      padding: 60px 0;
-      overflow: hidden;
-    }
-
-    .categoria-scroll {
+    .produto-container {
       display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      padding: 0 50px;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      padding: 40px 20px;
     }
 
-    .categoria-scroll::-webkit-scrollbar {
-      display: none;
+    .produto-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid white;
+      border-radius: 15px;
+      width: 300px;
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
-    .categoria-btn {
+    .produto-card:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .produto-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .produto-card h3 {
+      margin: 15px 0;
+      font-size: 22px;
+    }
+
+    .produto-card p {
+      color: #ccc;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .produto-card .preco {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ff6600;
+      margin-bottom: 20px;
+    }
+
+    .produto-card .avaliacao {
+      margin: 10px 0;
+    }
+
+    .produto-btn {
       background-color: rgba(255,255,255,0.1);
       border: 2px solid white;
       color: white;
-      font-size: 20px;
-      padding: 20px 40px;
+      font-size: 16px;
+      padding: 10px 20px;
       border-radius: 15px;
       cursor: pointer;
-      min-width: 200px;
-      transition: transform 0.3s ease, background 0.3s ease;
+      margin-top: 10px;
+      transition: background 0.3s ease;
     }
 
-    .categoria-btn:hover {
+    .produto-btn:hover {
       background: white;
       color: black;
-      transform: scale(1.05);
     }
 
-    .seta {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255,255,255,0.2);
-      border: none;
-      color: white;
-      font-size: 30px;
-      padding: 10px;
-      cursor: pointer;
-      z-index: 10;
+    .produto-btn--comprar {
+      background-color: #ff6600;
+      border-color: #ff6600;
     }
-
-    .seta.esquerda { left: 10px; }
-    .seta.direita { right: 10px; }
 
     footer {
       text-align: center;
@@ -107,29 +110,9 @@
       width: 100%;
     }
 
-    /* Botão do WhatsApp flutuante */
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      background: url('watz.png') no-repeat center center;
-      background-size: contain;
-      border: none;
-      cursor: pointer;
-      z-index: 100;
-      transition: transform 0.3s ease;
-    }
-
-    .whatsapp-btn:hover {
-      transform: scale(1.1);
-    }
-
     @media (max-width: 768px) {
-      .categoria-btn { min-width: 140px; font-size: 16px; }
-      .intro h1 { font-size: 32px; }
-      .intro p { font-size: 16px; }
+      .produto-card { width: 200px; }
+      header { font-size: 18px; }
     }
   </style>
 </head>
@@ -140,40 +123,53 @@
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
   </header>
 
-  <div class="intro">
-    <h1>Bem-vindo à Trentini Perfumes</h1>
-    <p>Descubra fragrâncias únicas e marcantes</p>
-  </div>
-
-  <div class="categoria-container">
-    <button class="seta esquerda" onclick="scrollCategorias(-1)">&#10094;</button>
-    <div class="categoria-scroll" id="categoriaScroll">
-      <button class="categoria-btn" onclick="location.href='masculino.html'">Masculino</button>
-      <button class="categoria-btn" onclick="location.href='feminino.html'">Feminino</button>
-      <button class="categoria-btn" onclick="alert('Promoções')">Promoções</button>
-      <button class="categoria-btn" onclick="alert('Importados')">Importados</button>
-      <button class="categoria-btn" onclick="alert('Mais Vendidos')">Mais Vendidos</button>
-      <button class="categoria-btn" onclick="alert('Lançamentos')">Lançamentos</button>
+  <div class="produto-container">
+    <!-- Produto 1 -->
+    <div class="produto-card">
+      <img src="produto1.jpg" alt="Perfume 1">
+      <h3>Perfume 1</h3>
+      <p>Perfume sofisticado com notas amadeiradas e frescas, perfeito para o homem moderno.</p>
+      <div class="preco">R$ 299,99</div>
+      <div class="avaliacao">★★★★☆ (200 avaliações)</div>
+      <button class="produto-btn produto-btn--comprar" onclick="alert('Adicionado ao carrinho!')">Comprar</button>
     </div>
-    <button class="seta direita" onclick="scrollCategorias(1)">&#10095;</button>
+    
+    <!-- Produto 2 -->
+    <div class="produto-card">
+      <img src="produto2.jpg" alt="Perfume 2">
+      <h3>Perfume 2</h3>
+      <p>Fragrância intensa com um toque de especiarias e uma base de madeiras nobres.</p>
+      <div class="preco">R$ 249,99</div>
+      <div class="avaliacao">★★★★★ (300 avaliações)</div>
+      <button class="produto-btn produto-btn--comprar" onclick="alert('Adicionado ao carrinho!')">Comprar</button>
+    </div>
+
+    <!-- Produto 3 -->
+    <div class="produto-card">
+      <img src="produto3.jpg" alt="Perfume 3">
+      <h3>Perfume 3</h3>
+      <p>Com notas florais e frutadas, ideal para um toque de frescor durante o dia.</p>
+      <div class="preco">R$ 219,90</div>
+      <div class="avaliacao">★★★★☆ (150 avaliações)</div>
+      <button class="produto-btn produto-btn--comprar" onclick="alert('Adicionado ao carrinho!')">Comprar</button>
+    </div>
+
+    <!-- Produto 4 -->
+    <div class="produto-card">
+      <img src="produto4.jpg" alt="Perfume 4">
+      <h3>Perfume 4</h3>
+      <p>Fragrância clássica com uma mistura de tabaco e couro, perfeita para ocasiões especiais.</p>
+      <div class="preco">R$ 350,00</div>
+      <div class="avaliacao">★★★☆☆ (180 avaliações)</div>
+      <button class="produto-btn produto-btn--comprar" onclick="alert('Adicionado ao carrinho!')">Comprar</button>
+    </div>
   </div>
 
   <footer>
     © 2025 Trentini Perfumes. Todos os direitos reservados.
   </footer>
 
-  <!-- Botão do WhatsApp -->
-  <a href="https://wa.me/554195252161" target="_blank">
-    <button class="whatsapp-btn"></button>
-  </a>
-
   <script>
-    function scrollCategorias(direcao) {
-      const container = document.getElementById('categoriaScroll');
-      const scrollAmount = 300;
-      container.scrollBy({ left: direcao * scrollAmount, behavior: 'smooth' });
-    }
-
     function toggleMenu() {
       alert('Menu ainda não implementado.');
     }

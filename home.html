@@ -92,27 +92,28 @@
     }
 
     .categorias {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 50px;
-      padding: 0 20px;
-      flex-wrap: wrap;
-      z-index: 2;
       position: relative;
-    }
-
-    .categoria {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 5px solid #fff;
-      position: relative;
+      width: 300px;
+      height: 300px;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: transform 0.3s ease;
+      z-index: 2;
+      transform-style: preserve-3d;
+      animation: rotate 15s infinite linear;
+    }
+
+    .categoria {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid #fff;
+      transition: transform 0.3s ease, transform-origin 0.5s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .categoria img {
@@ -121,11 +122,7 @@
       object-fit: cover;
     }
 
-    .categoria:hover {
-      transform: scale(1.1);
-    }
-
-    /* Animação da roleta */
+    /* Rotação dos botões */
     @keyframes rotate {
       0% {
         transform: rotate(0deg);
@@ -135,10 +132,17 @@
       }
     }
 
-    .rotate {
-      animation: rotate 10s linear infinite;
+    /* Efeito de foco para o centro */
+    .categoria:nth-child(1) {
+      transform-origin: 50% 50%;
+      z-index: 2;
     }
 
+    .categoria:hover {
+      transform: scale(1.2);
+    }
+
+    /* Animação da entrada da página */
     .fade-in {
       animation: fadeIn 1.2s ease-in-out;
     }
@@ -156,8 +160,13 @@
 
     @media (max-width: 600px) {
       .categorias {
-        flex-direction: column;
-        gap: 20px;
+        width: 200px;
+        height: 200px;
+      }
+
+      .categoria {
+        width: 90px;
+        height: 90px;
       }
     }
   </style>
@@ -179,43 +188,35 @@
   <div class="home fade-in">
     <div class="overlay"></div>
 
-    <div class="categorias" id="categorias">
-      <a href="masculino.html" class="categoria rotate">
+    <div class="categorias">
+      <a href="masculino.html" class="categoria" style="transform: rotate(0deg);">
         <img src="botaomasculino.png" alt="Masculino">
       </a>
-      <a href="feminino.html" class="categoria rotate">
+      <a href="feminino.html" class="categoria" style="transform: rotate(72deg);">
         <img src="botaofeminino.png" alt="Feminino">
       </a>
-      <a href="populares.html" class="categoria rotate">
+      <a href="populares.html" class="categoria" style="transform: rotate(144deg);">
         <img src="botao_populares.png" alt="Populares">
       </a>
-      <a href="cremes.html" class="categoria rotate">
+      <a href="cremes.html" class="categoria" style="transform: rotate(216deg);">
         <img src="botao_cremes.png" alt="Cremes">
       </a>
     </div>
   </div>
 
   <script>
-    let rotationSpeed = 10;
+    let rotationSpeed = 15; // Ajuste a velocidade de rotação
 
     function toggleMenu() {
       const menu = document.getElementById("menu");
       menu.style.display = menu.style.display === "flex" ? "none" : "flex";
     }
 
-    function accelerateRotation() {
-      rotationSpeed = rotationSpeed / 2; // Acelera o giro
-      const categories = document.querySelectorAll('.categoria');
-      categories.forEach(category => {
-        category.style.animation = `rotate ${rotationSpeed}s linear infinite`;
-      });
-    }
-
-    // Adiciona rotação quando a página carrega
+    // Inicia a rotação quando a página é carregada
     window.onload = () => {
-      const categories = document.querySelectorAll('.categoria');
-      categories.forEach(category => {
-        category.classList.add('rotate');
+      const categorias = document.querySelectorAll('.categoria');
+      categorias.forEach((categoria, index) => {
+        categoria.style.transform = `rotate(${index * 72}deg)`;
       });
     };
   </script>

@@ -109,7 +109,7 @@
 
   <script>
   const carousel = document.getElementById('carousel');
-  let currentIndex = 0;
+ let currentIndex = Math.floor(document.querySelectorAll('#carousel img').length / 2);
 
   function updateCarousel() {
     const imgs = carousel.querySelectorAll('img');

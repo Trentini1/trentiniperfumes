@@ -45,11 +45,12 @@
     }
 
     .carousel {
-      display: flex; /* Layout horizontal */
-      gap: 30px; /* Espaço entre imagens */
-      transition: transform 0.5s ease; /* Animação suave no movimento */
-      align-items: center; /* Alinha verticalmente */
-    }
+  display: flex;
+  gap: 30px;
+  transition: transform 0.5s ease;
+  align-items: center;
+  width: max-content; /* <-- ESSENCIAL: faz o flex se ajustar ao conteúdo */
+}
 
     .carousel img {
       width: 180px; /* Largura padrão */

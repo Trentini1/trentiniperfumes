@@ -15,7 +15,7 @@
     html {
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      overflow-x: hidden;
+      overflow: hidden;
       background: #000;
     }
 
@@ -92,28 +92,25 @@
     }
 
     .categorias {
-      position: relative;
-      width: 300px;
-      height: 300px;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      gap: 30px;
       z-index: 2;
-      transform-style: preserve-3d;
-      animation: rotate 15s infinite linear;
+      overflow: hidden;
+      transition: transform 0.5s ease-in-out;
     }
 
     .categoria {
-      position: absolute;
       width: 120px;
       height: 120px;
       border-radius: 50%;
       overflow: hidden;
       border: 5px solid #fff;
-      transition: transform 0.3s ease, transform-origin 0.5s ease;
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: transform 0.3s ease;
     }
 
     .categoria img {
@@ -122,24 +119,26 @@
       object-fit: cover;
     }
 
-    /* Rotação dos botões */
-    @keyframes rotate {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
+    /* Botão de navegação */
+    .button-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 3;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 50%;
     }
 
-    /* Efeito de foco para o centro */
-    .categoria:nth-child(1) {
-      transform-origin: 50% 50%;
-      z-index: 2;
+    .button-prev {
+      left: 20px;
     }
 
-    .categoria:hover {
-      transform: scale(1.2);
+    .button-next {
+      right: 20px;
     }
 
     /* Animação da entrada da página */
@@ -160,8 +159,7 @@
 
     @media (max-width: 600px) {
       .categorias {
-        width: 200px;
-        height: 200px;
+        gap: 20px;
       }
 
       .categoria {
@@ -188,37 +186,57 @@
   <div class="home fade-in">
     <div class="overlay"></div>
 
-    <div class="categorias">
-      <a href="masculino.html" class="categoria" style="transform: rotate(0deg);">
+    <div class="categorias" id="categorias">
+      <a href="masculino.html" class="categoria">
         <img src="botaomasculino.png" alt="Masculino">
       </a>
-      <a href="feminino.html" class="categoria" style="transform: rotate(72deg);">
+      <a href="feminino.html" class="categoria">
         <img src="botaofeminino.png" alt="Feminino">
       </a>
-      <a href="populares.html" class="categoria" style="transform: rotate(144deg);">
+      <a href="populares.html" class="categoria">
         <img src="botao_populares.png" alt="Populares">
       </a>
-      <a href="cremes.html" class="categoria" style="transform: rotate(216deg);">
+      <a href="cremes.html" class="categoria">
         <img src="botao_cremes.png" alt="Cremes">
       </a>
     </div>
+
+    <div class="button-nav button-prev" onclick="moveCarousel('prev')">◀</div>
+    <div class="button-nav button-next" onclick="moveCarousel('next')">▶</div>
   </div>
 
   <script>
-    let rotationSpeed = 15; // Ajuste a velocidade de rotação
+    let currentIndex = 0;
+
+    const categorias = document.querySelectorAll('.categoria');
+    const categoriasContainer = document.getElementById('categorias');
+
+    function moveCarousel(direction) {
+      if (direction === 'next') {
+        currentIndex++;
+        if (currentIndex >= categorias.length) {
+          currentIndex = 0;
+        }
+      } else if (direction === 'prev') {
+        currentIndex--;
+        if (currentIndex < 0) {
+          currentIndex = categorias.length - 1;
+        }
+      }
+
+      const offset = -currentIndex * 150; // Espaçamento entre os botões
+      categoriasContainer.style.transform = `translateX(${offset}px)`;
+    }
+
+    // Inicializa o carrossel
+    window.onload = () => {
+      moveCarousel('next');
+    };
 
     function toggleMenu() {
       const menu = document.getElementById("menu");
       menu.style.display = menu.style.display === "flex" ? "none" : "flex";
     }
-
-    // Inicia a rotação quando a página é carregada
-    window.onload = () => {
-      const categorias = document.querySelectorAll('.categoria');
-      categorias.forEach((categoria, index) => {
-        categoria.style.transform = `rotate(${index * 72}deg)`;
-      });
-    };
   </script>
 
 </body>

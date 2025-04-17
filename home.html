@@ -99,24 +99,34 @@
       z-index: 2;
       overflow: hidden;
       transition: transform 0.5s ease-in-out;
+      position: relative;
     }
 
     .categoria {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 5px solid #fff;
+      width: 500px;
+      height: 500px;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      position: absolute;
     }
 
     .categoria img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    /* Efeito de foco para o botão central */
+    .categoria.center {
+      transform: scale(1.1);
+      filter: none;
+    }
+
+    /* Efeito de desfoque para os botões fora do centro */
+    .categoria:not(.center) {
+      filter: blur(4px);
     }
 
     /* Botão de navegação */
@@ -163,8 +173,8 @@
       }
 
       .categoria {
-        width: 90px;
-        height: 90px;
+        width: 400px;
+        height: 400px;
       }
     }
   </style>
@@ -224,13 +234,24 @@
         }
       }
 
-      const offset = -currentIndex * 150; // Espaçamento entre os botões
+      updateCarousel();
+    }
+
+    function updateCarousel() {
+      categorias.forEach((categoria, index) => {
+        categoria.classList.remove('center');
+        if (index === currentIndex) {
+          categoria.classList.add('center');
+        }
+      });
+
+      const offset = -currentIndex * 600; // Ajuste para o tamanho dos botões
       categoriasContainer.style.transform = `translateX(${offset}px)`;
     }
 
     // Inicializa o carrossel
     window.onload = () => {
-      moveCarousel('next');
+      updateCarousel();
     };
 
     function toggleMenu() {

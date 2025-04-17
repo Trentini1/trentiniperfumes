@@ -1,87 +1,214 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <title>Trentini Perfumes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trentini Perfumes - Início</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      background-color: #000;
-      color: white;
+    body, html {
+      height: 100%;
       font-family: 'Segoe UI', sans-serif;
+      overflow: auto; /* Permite rolar a tela */
+      -webkit-overflow-scrolling: touch; /* Suaviza o scroll no iOS */
     }
 
-    header {
-      text-align: center;
-      padding: 30px 20px 10px;
+    .tela-inicial {
+      width: 100%;
+      height: 100vh;
+      background: url('fundo1.jpg') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      position: relative;
+      transition: background-color 0.5s ease;
     }
 
-    .logo {
-      max-width: 250px;
+    .tela-inicial::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      backdrop-filter: blur(0px);
+      background-color: rgba(0, 0, 0, 0);
+      transition: backdrop-filter 0.8s ease, background-color 0.8s ease;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .tela-inicial.blur-ativo::before {
+      backdrop-filter: blur(15px);
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .logo-trentini {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1500px;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      pointer-events: none;
+    }
+
+    .logo-trentini.ativa {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .video-apresentacao {
+      position: absolute;
+      top: 60%; /* Ajuste para que o vídeo fique abaixo da logo */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%; /* Ajuste do tamanho do vídeo */
       height: auto;
+      opacity: 0;
+      transition: opacity 1s ease;
+      z-index: 5;
     }
 
-    .video-container {
-      width: 100%;
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 0 20px;
+    .video-apresentacao.ativa {
+      opacity: 1;
     }
 
-    .video-container video {
-      width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    }
-
-    .categorias {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    .conteudo-central {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 20px;
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: 0 auto;
+      transition: opacity 0.5s ease;
     }
 
-    .categoria {
-      background-color: #111;
-      padding: 20px;
-      border-radius: 15px;
-      text-align: center;
+    .conteudo-central h1,
+    .conteudo-central p {
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
+
+    .conteudo-central p {
+      font-size: 1.2em;
+      opacity: 0.8;
+      animation-delay: 1s;
+    }
+
+    .botoes {
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 50px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .botoes a {
+      padding: 14px 24px;
+      background: white;
+      color: #000;
+      border-radius: 40px;
+      text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
-      border: 1px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 1.1em;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
     }
 
-    .categoria:hover {
-      background-color: #222;
+    .botoes a img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .botoes a:hover {
+      background: #000;
+      color: #fff;
       transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .logo-trentini {
+        width: 90%;
+        height: auto;
+      }
+      .video-apresentacao {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <img src="logo-branca.png" alt="Logo Trentini" class="logo">
-</header>
-
-<section class="video-container">
-  <video controls autoplay muted loop>
-    <source src="video-perfume.mp4" type="video/mp4">
-    Seu navegador não suporta vídeo.
+<div class="tela-inicial" id="tela">
+  <img src="LOGOHOME.png" alt="Trentini Logo" class="logo-trentini" id="logoTrentini"> <!-- Logo alterada para LOGOHOME.png -->
+  <video class="video-apresentacao" id="videoApresentacao" autoplay loop muted>
+    <source src="video-perfume.webm" type="video/webm">
+    Seu navegador não suporta o vídeo.
   </video>
-</section>
 
-<section class="categorias">
-  <div class="categoria">Masculino</div>
-  <div class="categoria">Feminino</div>
-  <div class="categoria">Populares</div>
-  <div class="categoria">Combos</div>
-  <div class="categoria">Cremes</div>
-  <div class="categoria">Ofertas</div>
-</section>
+  <div class="conteudo-central">
+    <h1 id="bem-vindo">Bem-vindo</h1>
+    <p id="descricao">Clique em qualquer lugar para começar</p>
+
+    <div class="botoes" id="botoes">
+      <a href="https://www.instagram.com/trentini.perfumes" target="_blank">
+        <img src="instagram.png" alt="Instagram"> Instagram
+      </a>
+      <a href="home.html">🛒 Entrar na Loja</a>
+    </div>
+  </div>
+</div>
+
+<audio id="som1" src="spraying-perfume_0KMM3qt.mp3" preload="auto"></audio>
+<audio id="som2" src="spraying-perfume_0KMM3qt.mp3" preload="auto"></audio>
+
+<script>
+  const som1 = document.getElementById('som1');
+  const som2 = document.getElementById('som2');
+  const tela = document.getElementById('tela');
+  const logo = document.getElementById('logoTrentini');
+  const video = document.getElementById('videoApresentacao');
+  const botoes = document.getElementById('botoes');
+  const bemVindo = document.getElementById('bem-vindo');
+  const descricao = document.getElementById('descricao');
+
+  function iniciarAnimacao() {
+    tela.removeEventListener('click', iniciarAnimacao);
+
+    tela.classList.add('blur-ativo');
+    logo.classList.add('ativa');
+    video.classList.add('ativa');
+
+    som1.play();
+    setTimeout(() => {
+      som2.currentTime = 0;
+      som2.play();
+    }, 300);
+
+    bemVindo.style.display = 'none';
+    descricao.style.display = 'none';
+
+    setTimeout(() => {
+      logo.classList.remove('ativa');
+      tela.classList.remove('blur-ativo');
+      botoes.style.display = 'flex';
+    }, 2000);
+  }
+
+  tela.addEventListener('click', iniciarAnimacao);
+</script>
 
 </body>
 </html>

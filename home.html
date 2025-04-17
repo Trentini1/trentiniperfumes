@@ -1,160 +1,158 @@
-<!DOCTYPE html> <!-- Declara o tipo de documento como HTML5 -->
-<html lang="pt-BR"> <!-- Define o idioma da página como português brasileiro -->
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" /> <!-- Define o conjunto de caracteres como UTF-8 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsivo em dispositivos móveis -->
-  <title>Trentini Perfumes</title> <!-- Título da aba do navegador -->
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trentini Perfumes</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; } /* Remove espaçamentos padrão e ajusta caixa */
-    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background: #000 url('fundohome.jpg') no-repeat center center; /* Fundo preto com imagem centralizada */
-      background-size: cover; /* Faz a imagem cobrir a tela */
-      font-family: 'Segoe UI', sans-serif; /* Fonte principal */
-      color: white; /* Cor do texto */
-      overflow-x: hidden; /* Evita rolagem horizontal */
+      background: #000 url('fundohome.jpg') no-repeat center center;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      overflow-x: hidden;
     }
 
     header {
-      background: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
-      padding: 15px 30px; /* Espaçamento interno */
-      display: flex; /* Layout em linha */
-      justify-content: space-between; /* Espaço entre logo e menu */
-      align-items: center; /* Alinha verticalmente */
-      font-size: 24px; /* Tamanho da fonte */
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 24px;
     }
 
-    header .logo {
-      font-weight: bold; /* Texto em negrito */
+    .logo { font-weight: bold; }
+    .menu-icon { cursor: pointer; font-size: 28px; }
+
+    .intro {
+      text-align: center;
+      margin-top: 80px;
+      padding: 20px;
     }
 
-    .menu-icon {
-      cursor: pointer; /* Mãozinha ao passar o mouse */
-      font-size: 28px; /* Tamanho do ícone */
+    .intro h1 {
+      font-size: 48px;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px #000;
     }
 
-    .carousel-container {
-      position: relative; /* Para posicionar os botões sobre o carrossel */
-      display: flex; /* Itens lado a lado */
-      justify-content: center; /* Centraliza o carrossel */
-      align-items: center; /* Centraliza verticalmente */
-      height: 100vh; /* Altura de tela cheia */
-      overflow: hidden; /* Esconde o conteúdo fora da área */
-      padding: 40px 0; /* Espaçamento vertical */
+    .intro p {
+      margin-top: 10px;
+      font-size: 20px;
+      color: #ccc;
     }
 
-    .carousel {
-  display: flex;
-  gap: 30px;
-  transition: transform 0.5s ease;
-  align-items: center;
-  width: max-content; /* <-- ESSENCIAL: faz o flex se ajustar ao conteúdo */
-}
-
-    .carousel img {
-      width: 180px; /* Largura padrão */
-      height: auto; /* Altura proporcional */
-      opacity: 0.3; /* Transparência padrão */
-      filter: blur(3px); /* Imagem embaçada */
-      transition: all 0.3s ease; /* Transições suaves */
-      cursor: pointer; /* Mãozinha ao passar o mouse */
+    .categoria-container {
+      position: relative;
+      padding: 60px 0;
+      overflow: hidden;
     }
 
-    .carousel img.active {
-      width: 400px; /* Imagem ativa maior */
-      opacity: 1; /* Totalmente visível */
-      filter: none; /* Sem blur */
-      transform: scale(1.1); /* Leve zoom */
-      z-index: 1; /* Fica na frente */
+    .categoria-scroll {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 0 50px;
     }
 
-    .nav-btn {
-      background: rgba(255,255,255,0.1); /* Botão semi-transparente */
-      border: none; /* Sem borda */
-      color: white; /* Cor do ícone */
-      font-size: 40px; /* Tamanho do ícone de seta */
-      cursor: pointer; /* Mãozinha */
-      padding: 10px 20px; /* Espaçamento interno */
-      position: absolute; /* Posição sobre o carrossel */
-      top: 50%; /* Centraliza verticalmente */
-      transform: translateY(-50%); /* Ajuste fino da centralização */
-      z-index: 10; /* Fica sobre as imagens */
+    .categoria-scroll::-webkit-scrollbar {
+      display: none;
     }
 
-    .nav-left { left: 10px; } /* Botão da esquerda */
-    .nav-right { right: 10px; } /* Botão da direita */
+    .categoria-btn {
+      background-color: rgba(255,255,255,0.1);
+      border: 2px solid white;
+      color: white;
+      font-size: 20px;
+      padding: 20px 40px;
+      border-radius: 15px;
+      cursor: pointer;
+      min-width: 200px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .categoria-btn:hover {
+      background: white;
+      color: black;
+      transform: scale(1.05);
+    }
+
+    .seta {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      font-size: 30px;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .seta.esquerda { left: 10px; }
+    .seta.direita { right: 10px; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #aaa;
+      background: rgba(0,0,0,0.7);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
 
     @media (max-width: 768px) {
-      .carousel img.active { width: 300px; } /* Reduz a imagem ativa no mobile */
-      .carousel img { width: 100px; } /* Reduz todas as imagens no mobile */
+      .categoria-btn { min-width: 140px; font-size: 16px; }
+      .intro h1 { font-size: 32px; }
+      .intro p { font-size: 16px; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">Trentini | ترينتيني</div> <!-- Nome da loja -->
-    <div class="menu-icon" onclick="toggleMenu()">☰</div> <!-- Ícone do menu (função ainda não criada) -->
+    <div class="logo">Trentini | ترينتيني</div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
   </header>
 
-  <div class="carousel-container">
-    <button class="nav-btn nav-left" onclick="prevSlide()">&#10094;</button> <!-- Botão anterior -->
-    <div class="carousel" id="carousel"> <!-- Área do carrossel -->
-      <img src="botaomasculino.png" onclick="location.href='masculino.html'"> <!-- Redireciona pra página masculina -->
-      <img src="botaofeminino.png" onclick="location.href='feminino.html'"> <!-- Redireciona pra feminina -->
-      <img src="botao3.png" onclick="alert('Outro botão')"> <!-- Ação de exemplo -->
-      <img src="botao4.png" onclick="alert('Mais um')"> <!-- Ação de exemplo -->
-      <img src="botao5.png" onclick="alert('E outro!')"> <!-- Ação de exemplo -->
-    </div>
-    <button class="nav-btn nav-right" onclick="nextSlide()">&#10095;</button> <!-- Botão próximo -->
+  <div class="intro">
+    <h1>Bem-vindo à Trentini Perfumes</h1>
+    <p>Descubra fragrâncias únicas e marcantes</p>
   </div>
 
+  <div class="categoria-container">
+    <button class="seta esquerda" onclick="scrollCategorias(-1)">&#10094;</button>
+    <div class="categoria-scroll" id="categoriaScroll">
+      <button class="categoria-btn" onclick="location.href='masculino.html'">Masculino</button>
+      <button class="categoria-btn" onclick="location.href='feminino.html'">Feminino</button>
+      <button class="categoria-btn" onclick="alert('Promoções')">Promoções</button>
+      <button class="categoria-btn" onclick="alert('Importados')">Importados</button>
+      <button class="categoria-btn" onclick="alert('Mais Vendidos')">Mais Vendidos</button>
+      <button class="categoria-btn" onclick="alert('Lançamentos')">Lançamentos</button>
+    </div>
+    <button class="seta direita" onclick="scrollCategorias(1)">&#10095;</button>
+  </div>
+
+  <footer>
+    © 2025 Trentini Perfumes. Todos os direitos reservados.
+  </footer>
+
   <script>
-  const carousel = document.getElementById('carousel'); // Pega o carrossel
-  let currentIndex = Math.floor(document.querySelectorAll('#carousel img').length / 2); // Começa no item do meio
+    function scrollCategorias(direcao) {
+      const container = document.getElementById('categoriaScroll');
+      const scrollAmount = 300;
+      container.scrollBy({ left: direcao * scrollAmount, behavior: 'smooth' });
+    }
 
-  function updateCarousel() {
-    const imgs = carousel.querySelectorAll('img'); // Pega todas as imagens
-    imgs.forEach((img) => {
-      img.classList.remove('active'); // Remove classe ativa
-      img.style.zIndex = '0';
-      img.style.opacity = '0.3';
-      img.style.filter = 'blur(3px)';
-      img.style.transform = 'scale(1)';
-    });
-
-    const activeImg = imgs[currentIndex]; // Define a imagem ativa
-    activeImg.classList.add('active');
-    activeImg.style.zIndex = '1';
-    activeImg.style.opacity = '1';
-    activeImg.style.filter = 'none';
-    activeImg.style.transform = 'scale(1.1)';
-
-    const container = document.querySelector('.carousel-container'); // Pega a largura visível
-    const containerCenter = container.offsetWidth / 2;
-    const activeImgRect = activeImg.getBoundingClientRect(); // Posição real da imagem ativa
-    const containerRect = container.getBoundingClientRect(); // Posição do container
-    const activeImgCenter = activeImgRect.left + activeImgRect.width / 2;
-    const offset = activeImgCenter - (containerRect.left + containerCenter); // Calcula quanto deslocar
-
-    carousel.style.transform = `translateX(-${offset}px)`; // Aplica a movimentação
-  }
-
-  function nextSlide() {
-    const imgs = carousel.querySelectorAll('img');
-    currentIndex = (currentIndex + 1) % imgs.length; // Avança circularmente
-    updateCarousel(); // Atualiza visualmente
-  }
-
-  function prevSlide() {
-    const imgs = carousel.querySelectorAll('img');
-    currentIndex = (currentIndex - 1 + imgs.length) % imgs.length; // Volta circularmente
-    updateCarousel();
-  }
-
-  window.addEventListener('load', updateCarousel); // Inicia centralizado
-  window.addEventListener('resize', updateCarousel); // Recentraliza ao redimensionar a tela
+    function toggleMenu() {
+      alert('Menu ainda não implementado.');
+    }
   </script>
 
 </body>

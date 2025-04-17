@@ -62,7 +62,7 @@
 
     .video-apresentacao {
       position: absolute;
-      top: 60%; /* Ajuste para que o vídeo fique abaixo da logo */
+      top: 60%;
       left: 50%;
       transform: translateX(-50%);
       width: 80%;
@@ -92,36 +92,19 @@
 <div class="tela-inicial" id="tela">
   <img src="LOGOHOME.png" alt="Trentini Logo" class="logo-trentini" id="logoTrentini">
   <video class="video-apresentacao" id="videoApresentacao" autoplay loop muted>
-    <source src="video-perfume.webm" type="video/webm">
-    Seu navegador não suporta o vídeo.
+    <source src="video-apresentacao.mp4" type="video/mp4">
+    Seu navegador não suporta o formato de vídeo.
   </video>
 </div>
 
-<audio id="som1" src="spraying-perfume_0KMM3qt.mp3" preload="auto"></audio>
-<audio id="som2" src="spraying-perfume_0KMM3qt.mp3" preload="auto"></audio>
-
 <script>
-  const som1 = document.getElementById('som1');
-  const som2 = document.getElementById('som2');
-  const tela = document.getElementById('tela');
   const logo = document.getElementById('logoTrentini');
   const video = document.getElementById('videoApresentacao');
 
-  function iniciarAnimacao() {
-    tela.removeEventListener('click', iniciarAnimacao);
-
-    tela.classList.add('blur-ativo');
+  setTimeout(() => {
     logo.classList.add('ativa');
     video.classList.add('ativa');
-
-    som1.play();
-    setTimeout(() => {
-      som2.currentTime = 0;
-      som2.play();
-    }, 300);
-  }
-
-  tela.addEventListener('click', iniciarAnimacao);
+  }, 1000);
 </script>
 
 </body>

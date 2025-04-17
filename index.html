@@ -43,23 +43,23 @@
       background-color: rgba(0, 0, 0, 0.3);
     }
 
-    .logo-trentini {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 1500px;
-      height: auto;
-      z-index: 10;
-      opacity: 0;
-      transition: opacity 0.8s ease;
-      pointer-events: none;
-    
-    }
+.logo-trentini {
+  position: absolute; /* Posiciona a logo de forma absoluta dentro do container pai */
+  top: 50%; /* Move a logo para 50% da altura da tela */
+  left: 50%; /* Move a logo para 50% da largura da tela */
+  transform: translate(-50%, -50%); /* Centraliza perfeitamente no meio da tela */
+  width: 1500px; /* Define o tamanho da logo manualmente */
 
-    .logo-trentini.ativa {
-      opacity: 1;
-    }
+  z-index: 10; /* Coloca a logo acima do fundo e do desfoque */
+  opacity: 0; /* Começa invisível */
+  transition: opacity 0.8s ease; /* Faz a logo aparecer suavemente */
+  pointer-events: none; /* Impede que a logo bloqueie cliques na tela */
+}
+
+.logo-trentini.ativa {
+  opacity: 1; /* Quando adiciona a classe 'ativa', a logo aparece */
+}
+
 
     .conteudo-central {
       position: relative;

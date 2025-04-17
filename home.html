@@ -59,7 +59,7 @@
     }
 
     .carousel img.active {
-      width: 500px;
+      width: 400px;
       opacity: 1;
       filter: none;
       transform: scale(1.1);
@@ -111,9 +111,9 @@
   const carousel = document.getElementById('carousel');
  let currentIndex = Math.floor(document.querySelectorAll('#carousel img').length / 2);
 
-  function updateCarousel() {
+ function updateCarousel() {
   const imgs = carousel.querySelectorAll('img');
-  imgs.forEach((img, index) => {
+  imgs.forEach((img) => {
     img.classList.remove('active');
     img.style.zIndex = '0';
     img.style.opacity = '0.3';
@@ -128,14 +128,15 @@
   activeImg.style.filter = 'none';
   activeImg.style.transform = 'scale(1.1)';
 
-  const containerWidth = document.querySelector('.carousel-container').offsetWidth;
-  const activeImgCenter = activeImg.offsetLeft + activeImg.offsetWidth / 2;
-  const carouselCenter = containerWidth / 2;
+  const container = document.querySelector('.carousel-container');
+  const containerCenter = container.offsetWidth / 2;
+  const activeImgRect = activeImg.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
+  const activeImgCenter = activeImgRect.left + activeImgRect.width / 2;
+  const offset = activeImgCenter - (containerRect.left + containerCenter);
 
-  const offset = activeImgCenter - carouselCenter;
   carousel.style.transform = `translateX(-${offset}px)`;
-
-  }
+}
 
   function nextSlide() {
     const imgs = carousel.querySelectorAll('img');

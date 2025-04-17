@@ -9,7 +9,8 @@
     body, html {
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
+      overflow: auto; /* Permite rolar a tela */
+      -webkit-overflow-scrolling: touch; /* Suaviza o scroll no iOS */
     }
 
     .tela-inicial {
@@ -25,14 +26,21 @@
       transition: background-color 0.5s ease;
     }
 
-    .tela-inicial.blur-ativo::before {
+    .tela-inicial::before {
       content: "";
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
+      backdrop-filter: blur(0px);
+      background-color: rgba(0, 0, 0, 0);
+      transition: backdrop-filter 0.8s ease, background-color 0.8s ease;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .tela-inicial.blur-ativo::before {
       backdrop-filter: blur(15px);
       background-color: rgba(0, 0, 0, 0.3);
-      z-index: 1;
     }
 
     .logo-trentini {
@@ -43,7 +51,14 @@
       width: 1500px;
       height: auto;
       z-index: 10;
-      display: none;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+      max-width: 100%; /* Ajusta para não ultrapassar a largura da tela */
+    }
+
+    .logo-trentini.ativa {
+      opacity: 1;
     }
 
     .conteudo-central {
@@ -53,6 +68,7 @@
       flex-direction: column;
       align-items: center;
       gap: 20px;
+      transition: opacity 0.5s ease;
     }
 
     .conteudo-central h1,
@@ -109,7 +125,8 @@
 
     @media (max-width: 600px) {
       .logo-trentini {
-        width: 200px;
+        width: 100%; /* Garante que a logo não ultrapasse a tela em dispositivos móveis */
+        height: auto;
       }
     }
   </style>
@@ -139,7 +156,7 @@
   const som1 = document.getElementById('som1');
   const som2 = document.getElementById('som2');
   const tela = document.getElementById('tela');
-  const logoTrentini = document.getElementById('logoTrentini');
+  const logo = document.getElementById('logoTrentini');
   const botoes = document.getElementById('botoes');
   const bemVindo = document.getElementById('bem-vindo');
   const descricao = document.getElementById('descricao');
@@ -147,26 +164,20 @@
   function iniciarAnimacao() {
     tela.removeEventListener('click', iniciarAnimacao);
 
-    // Ativa desfoque com pseudo-elemento
     tela.classList.add('blur-ativo');
+    logo.classList.add('ativa');
 
-    // Mostra logo
-    logoTrentini.style.display = 'block';
-
-    // Toca som
     som1.play();
     setTimeout(() => {
       som2.currentTime = 0;
       som2.play();
     }, 300);
 
-    // Esconde textos
     bemVindo.style.display = 'none';
     descricao.style.display = 'none';
 
-    // Após 2s, tira logo, blur e mostra botões
     setTimeout(() => {
-      logoTrentini.style.display = 'none';
+      logo.classList.remove('ativa');
       tela.classList.remove('blur-ativo');
       botoes.style.display = 'flex';
     }, 2000);

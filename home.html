@@ -3,208 +3,141 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home - Trentini Perfumes</title>
+  <title>Trentini Perfumes</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body,
-    html {
-      height: 100%;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #000 url('fundohome.jpg') no-repeat center center;
+      background-size: cover;
       font-family: 'Segoe UI', sans-serif;
-      background: #000;
-      overflow: hidden;
+      color: white;
+      overflow-x: hidden;
     }
 
-    .navbar {
-      width: 100%;
-      height: 60px;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
+    header {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 20px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 10;
+      font-size: 24px;
     }
 
-    .navbar h1 {
-      font-size: 24px;
+    header .logo {
       font-weight: bold;
     }
 
-    .navbar span {
-      font-size: 18px;
-      margin-left: 10px;
-      font-style: italic;
+    .menu-icon {
+      cursor: pointer;
+      font-size: 28px;
     }
 
-    .menu-toggle {
-      font-size: 28px;
+    .carousel-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      padding: 40px 0;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 30px;
+      transition: transform 0.5s ease;
+      align-items: center;
+    }
+
+    .carousel img {
+      width: 180px;
+      height: auto;
+      opacity: 0.3;
+      filter: blur(3px);
+      transition: all 0.3s ease;
       cursor: pointer;
     }
 
-    .menu-rapido {
-      position: absolute;
-      top: 60px;
-      right: 0;
-      background: rgba(0, 0, 0, 0.9);
-      color: white;
-      padding: 20px;
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 10;
-    }
-
-    .menu-rapido a {
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-    }
-
-    .home {
-      width: 100%;
-      min-height: 100vh;
-      background: url('fundohome.jpg') no-repeat center center;
-      background-size: cover;
-      color: white;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding-top: 100px;
-      overflow: hidden;
-    }
-
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
+    .carousel img.active {
+      width: 500px;
+      opacity: 1;
+      filter: none;
+      transform: scale(1.1);
       z-index: 1;
     }
 
-    .categorias-wrapper {
-      position: relative;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 2;
-    }
-
-    .categorias {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .categoria {
-      width: 500px;
-      height: 500px;
-      margin: 0 20px;
-      flex-shrink: 0;
-      filter: blur(4px);
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
-
-    .categoria.center {
-      transform: scale(1.1);
-      filter: none;
-    }
-
-    .categoria img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .button-nav {
+    .nav-btn {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      padding: 10px 20px;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 30px;
-      color: #fff;
-      cursor: pointer;
-      z-index: 3;
-      padding: 10px;
-      background-color: rgba(0, 0, 0, 0.6);
-      border-radius: 50%;
+      z-index: 10;
     }
 
-    .button-prev {
-      left: 20px;
-    }
+    .nav-left { left: 10px; }
+    .nav-right { right: 10px; }
 
-    .button-next {
-      right: 20px;
+    @media (max-width: 768px) {
+      .carousel img.active { width: 300px; }
+      .carousel img { width: 100px; }
     }
   </style>
 </head>
 <body>
-  <div class="navbar">
-    <div>
-      <h1>Trentini <span>ترينتيني</span></h1>
-    </div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <div class="menu-rapido" id="menu">
-      <a href="#">Contato</a>
-      <a href="#">Instagram</a>
-      <a href="#categorias">Categorias</a>
-    </div>
-  </div>
 
-  <div class="home">
-    <div class="overlay"></div>
-    <div class="categorias-wrapper">
-      <div class="button-nav button-prev" onclick="moveCarousel('prev')">◀</div>
-      <div class="categorias" id="categorias">
-        <a href="#" class="categoria"><img src="botaomasculino.png" alt="Masculino"></a>
-        <a href="#" class="categoria"><img src="botaofeminino.png" alt="Feminino"></a>
-        <a href="#" class="categoria"><img src="botao_populares.png" alt="Populares"></a>
-        <a href="#" class="categoria"><img src="botao_cremes.png" alt="Cremes"></a>
-      </div>
-      <div class="button-nav button-next" onclick="moveCarousel('next')">▶</div>
+  <header>
+    <div class="logo">Trentini | ترينتيني</div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <div class="carousel-container">
+    <button class="nav-btn nav-left" onclick="prevSlide()">&#10094;</button>
+    <div class="carousel" id="carousel">
+      <img src="botaomasculino.png" onclick="location.href='masculino.html'">
+      <img src="botaofeminino.png" onclick="location.href='feminino.html'">
+      <img src="botao3.png" onclick="alert('Outro botão')">
+      <img src="botao4.png" onclick="alert('Mais um')">
+      <img src="botao5.png" onclick="alert('E outro!')">
     </div>
+    <button class="nav-btn nav-right" onclick="nextSlide()">&#10095;</button>
   </div>
 
   <script>
-    const categorias = document.querySelectorAll('.categoria');
+    const carousel = document.getElementById('carousel');
     let currentIndex = 0;
 
     function updateCarousel() {
-      categorias.forEach((categoria, index) => {
-        categoria.classList.remove('center');
-      });
-
-      categorias[currentIndex].classList.add('center');
-
-      const container = document.querySelector('.categorias');
-      const offset = -currentIndex * 540; // 500px + 2*20px de margin
-      container.style.transform = `translateX(${offset}px)`;
+      const imgs = carousel.querySelectorAll('img');
+      imgs.forEach(img => img.classList.remove('active'));
+      imgs[currentIndex].classList.add('active');
+      const offset = (carousel.offsetWidth / 2) - (imgs[currentIndex].offsetWidth / 2);
+      let totalWidth = 0;
+      for (let i = 0; i < currentIndex; i++) {
+        totalWidth += imgs[i].offsetWidth + 30; // 30 = gap
+      }
+      carousel.style.transform = `translateX(${-totalWidth + offset}px)`;
     }
 
-    function moveCarousel(direction) {
-      if (direction === 'next') {
-        currentIndex = (currentIndex + 1) % categorias.length;
-      } else {
-        currentIndex = (currentIndex - 1 + categorias.length) % categorias.length;
-      }
+    function nextSlide() {
+      const imgs = carousel.querySelectorAll('img');
+      currentIndex = (currentIndex + 1) % imgs.length;
       updateCarousel();
     }
 
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    function prevSlide() {
+      const imgs = carousel.querySelectorAll('img');
+      currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+      updateCarousel();
     }
 
-    window.onload = updateCarousel;
+    window.addEventListener('load', updateCarousel);
+    window.addEventListener('resize', updateCarousel);
   </script>
+
 </body>
 </html>

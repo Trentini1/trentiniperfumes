@@ -18,7 +18,90 @@
       overflow-x: hidden;
     }
 
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .navbar {
+      width: 100%;
+      background: #111;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      z-index: 999;
+    }
+
+    .navbar .logo {
+      font-size: 26px;
+      font-weight: bold;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .navbar .logo span.arabic {
+      font-family: 'Arial', sans-serif;
+      font-size: 20px;
+      opacity: 0.8;
+    }
+
+    .menu-icon {
+      width: 30px;
+      height: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu-icon div {
+      height: 4px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background: #111;
+      color: white;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: right 0.3s ease;
+      z-index: 998;
+    }
+
+    .sidebar.open {
+      right: 0;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: opacity 0.3s;
+    }
+
+    .sidebar a:hover {
+      opacity: 0.7;
+    }
+
     .home {
+      padding-top: 80px;
       min-height: 100vh;
       background: #000;
       color: white;
@@ -26,12 +109,6 @@
       flex-direction: column;
       align-items: center;
     }
-
-    .logo-home {
-  width: 500px;
-  max-width: 90%;
-  margin-top: 20px;
-}
 
     .video-container {
       position: relative;
@@ -59,38 +136,47 @@
       padding: 0 20px;
     }
 
-   .categorias img {
-  width: 500px;
-  max-width: 90%;
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
+    .categorias img {
+      width: 400px;
+      max-width: 90%;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
     .categorias img:hover {
       transform: scale(1.05);
     }
 
     @media (max-width: 600px) {
-      .logo-home {
-        width: 200px;
-      }
-
       .video-container {
         height: 40vh;
       }
 
-      .categorias {
-        gap: 20px;
+      .categorias img {
+        width: 100%;
       }
     }
   </style>
 </head>
-<body>
+<body class="fade-in">
+
+  <div class="navbar">
+    <div class="logo">Trentini <span class="arabic">ترينتيني</span></div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <a href="#contato">Contato</a>
+    <a href="https://instagram.com" target="_blank">Instagram</a>
+    <a href="#categorias">Categorias</a>
+  </div>
 
   <div class="home">
-    <img src="LOGOHOME.png" alt="Trentini Logo" class="logo-home">
-
     <div class="video-container">
       <video autoplay muted loop playsinline>
         <source src="yt1z.net - ASAD by Lattafa (1080p).mp4" type="video/mp4">
@@ -98,7 +184,7 @@
       </video>
     </div>
 
-    <div class="categorias">
+    <div class="categorias" id="categorias">
       <a href="masculino.html">
         <img src="botaomasculino.png" alt="Masculino">
       </a>
@@ -107,6 +193,13 @@
       </a>
     </div>
   </div>
+
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+  </script>
 
 </body>
 </html>

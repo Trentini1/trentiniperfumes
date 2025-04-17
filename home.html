@@ -100,6 +100,7 @@
       overflow: hidden;
       transition: transform 0.5s ease-in-out;
       position: relative;
+      width: 100%;
     }
 
     .categoria {
@@ -245,7 +246,7 @@
         }
       });
 
-      const offset = -currentIndex * 600; // Ajuste para o tamanho dos botões
+      const offset = -currentIndex * 550; // Ajustado para o tamanho dos botões e distâncias
       categoriasContainer.style.transform = `translateX(${offset}px)`;
     }
 

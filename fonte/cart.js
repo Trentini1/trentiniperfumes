@@ -1,44 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- BANCO DE DADOS DE PRODUTOS ---
+    // --- BANCO DE DADOS DE PRODUTOS (COM MAIS ITENS DO SEU CATÁLOGO) ---
+    // IMPORTANTE: O nome do arquivo em 'image' deve ser igual ao nome do arquivo na pasta /fotos
     const products = [
-        {
-            id: 1, name: 'One Million', brand: 'Paco Rabanne', price: 499.99, image: 'fotos/one-million.jpg',
-        },
-        {
-            id: 2, name: '212 VIP Black', brand: 'Carolina Herrera', price: 549.99, image: 'fotos/212-vip-black.jpg',
-        },
-        {
-            id: 3, name: 'Sauvage', brand: 'Dior', price: 749.99, image: 'fotos/sauvage.jpg',
-        },
-        {
-            id: 4, name: 'Invictus', brand: 'Paco Rabanne', price: 499.99, image: 'fotos/invictus.jpg',
-        },
-        {
-            id: 5, name: 'Acqua di Giò', brand: 'Giorgio Armani', price: 499.99, image: 'fotos/acqua-di-gio.jpg',
-        },
-        {
-            id: 6, name: 'Scandal Pour Homme', brand: 'Jean Paul Gaultier', price: 599.99, image: 'fotos/scandal-pour-homme.jpg',
-        },
-        {
-            id: 7, name: 'Le Male Elixir', brand: 'Jean Paul Gaultier', price: 789.99, image: 'fotos/le-male-elixir.jpg',
-        },
-        {
-            id: 8, name: '212 VIP Rosé', brand: 'Carolina Herrera', price: 549.99, image: 'fotos/212-vip-rose.jpg',
-        },
-        {
-            id: 9, name: 'La Vie Est Belle', brand: 'Lancôme', price: 619.90, image: 'fotos/la-vie-est-belle.jpg',
-        },
-        {
-            id: 10, name: 'Good Girl Blush', brand: 'Carolina Herrera', price: 649.99, image: 'fotos/good-girl-blush-elixir.jpg',
-        },
-        {
-            id: 11, name: 'Bad Boy Le Parfum', brand: 'Carolina Herrera', price: 520.00, image: 'fotos/bad-boy-le-parfum.jpg',
-        },
-        {
-            id: 12, name: 'La Belle', brand: 'Jean Paul Gaultier', price: 599.99, image: 'fotos/la-belle.jpg',
-        },
-        // Adicione mais produtos do seu catálogo aqui
+        // Masculinos Populares
+        { id: 1, name: 'One Million', brand: 'Paco Rabanne', price: 499.99, image: 'fotos/one-million.jpg' },
+        { id: 2, name: '212 VIP Black', brand: 'Carolina Herrera', price: 549.99, image: 'fotos/212-vip-black.jpg' },
+        { id: 3, name: 'Sauvage', brand: 'Dior', price: 749.99, image: 'fotos/sauvage.jpg' },
+        { id: 4, name: 'Invictus', brand: 'Paco Rabanne', price: 499.99, image: 'fotos/invictus.jpg' },
+        { id: 5, name: 'Acqua di Giò', brand: 'Giorgio Armani', price: 499.99, image: 'fotos/acqua-di-gio.jpg' },
+        { id: 6, name: 'Scandal Pour Homme', brand: 'Jean Paul Gaultier', price: 599.99, image: 'fotos/scandal-pour-homme.jpg' },
+        { id: 7, name: 'Le Male Elixir', brand: 'Jean Paul Gaultier', price: 789.99, image: 'fotos/le-male-elixir.jpg' },
+        { id: 35, name: 'Phantom', brand: 'Paco Rabanne', price: 549.99, image: 'fotos/phantom.jpg' },
+        
+        // Femininos Populares
+        { id: 8, name: '212 VIP Rosé', brand: 'Carolina Herrera', price: 549.99, image: 'fotos/212-vip-rose.jpg' },
+        { id: 9, name: 'La Vie Est Belle', brand: 'Lancôme', price: 619.90, image: 'fotos/la-vie-est-belle.jpg' },
+        { id: 10, name: 'Good Girl Blush', brand: 'Carolina Herrera', price: 649.99, image: 'fotos/good-girl-blush-elixir.jpg' },
+        { id: 12, name: 'La Belle', brand: 'Jean Paul Gaultier', price: 599.99, image: 'fotos/la-belle.jpg' },
+        { id: 60, name: 'La Nuit Trésor', brand: 'Lancôme', price: 619.99, image: 'fotos/la-nuit-tresor.jpg' },
+        { id: 63, name: 'Angel', brand: 'Mugler', price: 749.99, image: 'fotos/angel.jpg' },
+        { id: 76, name: 'Scandal', brand: 'Jean Paul Gaultier', price: 549.99, image: 'fotos/scandal-feminino.jpg' },
+        { id: 82, name: 'Miss Dior', brand: 'Dior', price: 649.99, image: 'fotos/miss-dior.jpg' },
+
+        // Linha Bad Boy
+        { id: 100, name: 'Bad Boy', brand: 'Carolina Herrera', price: 499.99, image: 'fotos/bad-boy.jpg' },
+        { id: 108, name: 'Bad Boy Le Parfum', brand: 'Carolina Herrera', price: 520.00, image: 'fotos/bad-boy-le-parfum.jpg' },
+        { id: 110, name: 'Bad Boy Cobalt', brand: 'Carolina Herrera', price: 509.99, image: 'fotos/bad-boy-cobalt.jpg' },
+        { id: 134, name: 'Bad Boy Extreme', brand: 'Carolina Herrera', price: 519.99, image: 'fotos/bad-boy-extreme.jpg' },
+        
+        // Linha Good Girl
+        { id: 348, name: 'Good Girl EDP', brand: 'Carolina Herrera', price: 579.99, image: 'fotos/good-girl.jpg' },
+        { id: 353, name: 'Very Good Girl', brand: 'Carolina Herrera', price: 559.99, image: 'fotos/very-good-girl.jpg' },
+        { id: 358, name: 'Very Good Girl Glam', brand: 'Carolina Herrera', price: 639.99, image: 'fotos/very-good-girl-glam.jpg' },
+
+        // Outros
+        { id: 228, name: 'Versace Eros', brand: 'Versace', price: 489.99, image: 'fotos/versace-eros.jpg' },
+        { id: 212, name: 'CK One', brand: 'Calvin Klein', price: 249.99, image: 'fotos/ck-one.jpg' },
+        { id: 207, name: 'Ferrari Black', brand: 'Ferrari', price: 239.99, image: 'fotos/ferrari-black.jpg' },
+        { id: 430, name: 'Libre', brand: 'YSL', price: 699.99, image: 'fotos/libre.jpg' },
     ];
 
     const whatsappNumber = '5541995252161'; // <--- SEU NÚMERO DE WHATSAPP AQUI
@@ -72,13 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderProducts(containerId, productList) {
         const container = document.getElementById(containerId);
-        if (!container) return;
+        if (!container) return; // Se o elemento não existe na página, não faz nada.
+        
         container.innerHTML = '';
         productList.forEach(product => {
             const card = document.createElement('div');
             card.className = 'product-card';
             card.innerHTML = `
-                <div class="product-image"><img src="${product.image}" alt="${product.name}"></div>
+                <div class="product-image"><img src="${product.image}" alt="${product.name}" onerror="this.onerror=null;this.src='https://placehold.co/400x400/f8f9fa/ccc?text=Trentini';"></div>
                 <div class="product-info">
                     <p class="brand">${product.brand}</p>
                     <h3>${product.name}</h3>
@@ -89,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(card);
         });
 
+        // Adiciona o listener de clique diretamente no container, que sempre existe se a função continuou.
         container.addEventListener('click', (e) => {
             if (e.target.classList.contains('add-to-cart-btn')) {
                 const productId = parseInt(e.target.dataset.id);
@@ -99,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderCartPage() {
         const container = document.getElementById('cart-page-container');
-        if (!container) return;
+        if (!container) return; // Se não estamos na página do carrinho, não faz nada.
 
         if (cart.length === 0) {
             container.innerHTML = `<div class="cart-empty-message">Seu carrinho está vazio. <a href="catalogo.html">Continue comprando</a>.</div>`;
@@ -110,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.forEach(item => {
             itemsHTML += `
                 <div class="cart-item">
-                    <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-img" onerror="this.onerror=null;this.src='https://placehold.co/100x100/f8f9fa/ccc?text=Trentini';">
                     <div class="cart-item-info">
                         <h3>${item.name}</h3>
                         <p>${item.brand}</p>
@@ -128,7 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
         itemsHTML += '</div>';
 
         const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-        // Pode adicionar frete ou outras taxas aqui no futuro
         const total = subtotal;
 
         const summaryHTML = `
@@ -179,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function generateWhatsAppMessage() {
+        if (cart.length === 0) return;
         let message = "Olá, Trentini Perfumes! Gostaria de fazer o seguinte pedido:\n\n";
         cart.forEach(item => {
             message += `*${item.name}* (${item.quantity}x) - R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n`;
@@ -190,11 +192,23 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open(url, '_blank');
     }
 
+    // --- INICIALIZAÇÃO CORRIGIDA ---
+    // Esta função verifica qual página está ativa e chama a função de renderização correta.
+    function initializePage() {
+        updateCartCount(); // Atualiza o contador do carrinho em todas as páginas.
 
-    // --- INICIALIZAÇÃO ---
-    updateCartCount();
-    renderProducts('product-grid-featured', products.slice(0, 4)); // Mostra 4 produtos na home
-    renderProducts('product-grid-full', products); // Mostra todos no catálogo
-    renderCartPage();
+        if (document.getElementById('product-grid-featured')) {
+            renderProducts('product-grid-featured', products.slice(0, 4)); // Mostra 4 produtos na home
+        }
 
+        if (document.getElementById('product-grid-full')) {
+            renderProducts('product-grid-full', products); // Mostra todos os produtos no catálogo
+        }
+
+        if (document.getElementById('cart-page-container')) {
+            renderCartPage(); // Monta a página do carrinho
+        }
+    }
+
+    initializePage();
 });

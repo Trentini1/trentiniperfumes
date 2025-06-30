@@ -3,99 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trentini Perfumes - Catálogo e Vendas</title>
-    <meta name="description" content="Catálogo completo da Trentini Perfumes. Compre perfumes importados masculinos e femininos com facilidade.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-
+    <title>Trentini Perfumes - Luxo e Sofisticação</title>
     <link rel="stylesheet" href="fonte/style.css">
     <script src="fonte/cart.js" defer></script>
-    <script src="fonte/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 </head>
 <body>
 
-    <div class="custom-cursor"></div>
-
     <header class="header">
-        <nav class="container">
-            <a href="#" class="logo">
-                 <h1>Trentini</h1>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="#catalogo">Catálogo</a></li>
-                <li><a href="#sobre">Nossa Essência</a></li>
-            </ul>
+        <div class="container">
+            <a href="index.html" class="logo"><h1>Trentini</h1></a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                </ul>
+            </nav>
             <div class="header-icons">
-                <a href="https://www.instagram.com/trentini.perfumes/" target="_blank" class="nav-social">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <div class="cart-icon-container">
-                    <i class="fas fa-shopping-bag" id="cart-icon"></i>
+                <a href="https://www.instagram.com/trentini.perfumes/" target="_blank" class="nav-social"><i class="fab fa-instagram"></i></a>
+                <a href="carrinho.html" class="cart-icon-link">
+                    <i class="fas fa-shopping-bag"></i>
                     <span id="cart-count">0</span>
-                </div>
+                </a>
             </div>
-        </nav>
+        </div>
     </header>
 
     <main>
-        <section id="hero">
+        <section class="hero">
             <div class="hero-content">
-                <h1 class="reveal-text">A Alquimia do Deserto em Cada Gota</h1>
-                <p class="reveal-text">Fragrâncias que transcendem o tempo. Bem-vindo à Trentini Perfumes.</p>
-                <a href="#catalogo" class="btn-primary reveal-text">Ver Catálogo</a>
+                <h1>A Essência da Elegância</h1>
+                <p>Descubra fragrâncias que definem momentos e criam memórias inesquecíveis. Qualidade e sofisticação em cada frasco.</p>
+                <a href="catalogo.html" class="btn btn-primary">Explorar Coleção</a>
             </div>
-            <div class="hero-background"></div>
         </section>
 
-        <section id="catalogo" class="container section-padding">
-            <h2 class="section-title animate-on-scroll">Nosso Catálogo</h2>
-            <div class="product-grid" id="product-grid"></div>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Nossos Destaques</h2>
+                <div class="product-grid" id="product-grid-featured"></div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="catalogo.html" class="btn btn-secondary">Ver Catálogo Completo</a>
+                </div>
+            </div>
         </section>
 
-        <section id="sobre" class="section-padding">
-            <div class="container about-content">
-                <div class="about-text animate-on-scroll">
-                    <h2 class="section-title">Nossa Essência</h2>
-                    <p>A Trentini Perfumes nasceu da paixão por fragrâncias que contam histórias. Viajamos ao coração do Oriente para selecionar os mais puros óleos e essências, trazendo para você a tradição milenar da perfumaria árabe em frascos de design contemporâneo. Cada produto é uma obra de arte, uma experiência que desperta os sentidos.</p>
-                </div>
-                 <div class="about-image animate-on-scroll">
-                    <img src="fotos/about_image.jpg" alt="Ingredientes de perfumes árabes">
-                </div>
+        <section class="section section-bg">
+            <div class="container" style="text-align: center; max-width: 800px;">
+                <h2 class="section-title">Nossa Filosofia</h2>
+                <p>Na Trentini Perfumes, acreditamos que um perfume é mais do que uma fragrância; é uma declaração de identidade. Selecionamos cuidadosamente cada item, priorizando a qualidade excepcional e a arte da perfumaria para oferecer a você uma experiência sensorial única e luxuosa.</p>
             </div>
         </section>
     </main>
 
-    <div id="cart-sidebar" class="cart-sidebar">
-        <div class="cart-header">
-            <h3>Seu Carrinho</h3>
-            <button id="close-cart-btn" class="close-cart-btn">&times;</button>
-        </div>
-        <div id="cart-items" class="cart-items">
-            <p class="cart-empty-message">Seu carrinho está vazio.</p>
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total:</span>
-                <span id="cart-total-price">R$ 0,00</span>
-            </div>
-            <button id="checkout-btn" class="btn-checkout">Finalizar Compra</button>
-        </div>
-    </div>
-    <div id="cart-overlay" class="cart-overlay"></div>
-
-
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Trentini Perfumes. Todos os direitos reservados.</p>
-            <p>Criado com paixão e tecnologia.</p>
-            <a href="https://www.instagram.com/trentini.perfumes/" target="_blank" class="footer-social">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
+        <p>&copy; 2025 Trentini Perfumes. Todos os direitos reservados.</p>
     </footer>
 
 </body>

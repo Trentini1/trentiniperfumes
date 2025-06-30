@@ -1,51 +1,109 @@
-// CÓDIGO cart.js - VERSÃO FINAL RECOMENDADA
+// CÓDIGO DEFINITIVO cart.js - CATÁLOGO COMPLETO
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- BANCO DE DADOS DE PRODUTOS ---
-    // Usando um placeholder de luxo, abstrato e consistente para todos os produtos.
-    // Este é o método profissional enquanto você não tem as fotos reais.
-    const placeholderImage = 'https://images.unsplash.com/photo-1617058810984-a173ab039de6?q=80&w=1887&auto=format&fit=crop';
-    
+    // ===================================================================================
+    // IMPORTANTE: ESTE É O ÚNICO ARQUIVO QUE VOCÊ PRECISA EDITAR NO FUTURO!
+    // Para adicionar/remover produtos ou alterar preços, basta editar esta lista.
+    // O nome da 'image' deve corresponder exatamente ao nome do arquivo na pasta /fotos
+    // ===================================================================================
     const products = [
-        // Masculinos Populares
-        { id: 1, name: 'One Million', brand: 'Paco Rabanne', price: 499.99, image: placeholderImage },
-        { id: 2, name: '212 VIP Black', brand: 'Carolina Herrera', price: 549.99, image: placeholderImage },
-        { id: 3, name: 'Sauvage', brand: 'Dior', price: 749.99, image: placeholderImage },
-        { id: 4, name: 'Invictus', brand: 'Paco Rabanne', price: 499.99, image: placeholderImage },
-        { id: 5, name: 'Acqua di Giò', brand: 'Giorgio Armani', price: 499.99, image: placeholderImage },
-        { id: 6, name: 'Scandal Pour Homme', brand: 'Jean Paul Gaultier', price: 599.99, image: placeholderImage },
-        { id: 7, name: 'Le Male Elixir', brand: 'Jean Paul Gaultier', price: 789.99, image: placeholderImage },
-        { id: 35, name: 'Phantom', brand: 'Paco Rabanne', price: 549.99, image: placeholderImage },
-        
-        // Femininos Populares
-        { id: 8, name: '212 VIP Rosé', brand: 'Carolina Herrera', price: 549.99, image: placeholderImage },
-        { id: 9, name: 'La Vie Est Belle', brand: 'Lancôme', price: 619.90, image: placeholderImage },
-        { id: 10, name: 'Good Girl Blush', brand: 'Carolina Herrera', price: 649.99, image: placeholderImage },
-        { id: 12, name: 'La Belle', brand: 'Jean Paul Gaultier', price: 599.99, image: placeholderImage },
-        { id: 60, name: 'La Nuit Trésor', brand: 'Lancôme', price: 619.99, image: placeholderImage },
-        { id: 63, name: 'Angel', brand: 'Mugler', price: 749.99, image: placeholderImage },
-        { id: 76, name: 'Scandal', brand: 'Jean Paul Gaultier', price: 549.99, image: placeholderImage },
-        { id: 82, name: 'Miss Dior', brand: 'Dior', price: 649.99, image: placeholderImage },
+        // --- PÁGINA 1: MASCULINOS POPULARES ---
+        { id: 1, name: 'One Million', brand: 'Paco Rabanne', price: 499.99, image: 'fotos/one-million.jpg' },
+        { id: 2, name: '212 VIP Black', brand: 'Carolina Herrera', price: 549.99, image: 'fotos/212-vip-black.jpg' },
+        { id: 3, name: 'Sauvage', brand: 'Dior', price: 749.99, image: 'fotos/sauvage.jpg' },
+        { id: 4, name: 'Invictus', brand: 'Paco Rabanne', price: 499.99, image: 'fotos/invictus.jpg' },
+        { id: 5, name: 'Acqua di Giò', brand: 'Giorgio Armani', price: 499.99, image: 'fotos/acqua-di-gio.jpg' },
+        { id: 6, name: 'Scandal Pour Homme', brand: 'Jean Paul Gaultier', price: 599.99, image: 'fotos/scandal-pour-homme.jpg' },
+        { id: 7, name: 'Le Male Elixir', brand: 'Jean Paul Gaultier', price: 789.99, image: 'fotos/le-male-elixir.jpg' },
+        { id: 8, name: 'Phantom', brand: 'Paco Rabanne', price: 549.99, image: 'fotos/phantom.jpg' },
 
-        // Linha Bad Boy
-        { id: 100, name: 'Bad Boy', brand: 'Carolina Herrera', price: 499.99, image: placeholderImage },
-        { id: 108, name: 'Bad Boy Le Parfum', brand: 'Carolina Herrera', price: 520.00, image: placeholderImage },
-        { id: 110, name: 'Bad Boy Cobalt', brand: 'Carolina Herrera', price: 509.99, image: placeholderImage },
-        { id: 134, name: 'Bad Boy Extreme', brand: 'Carolina Herrera', price: 519.99, image: placeholderImage },
-        
-        // Linha Good Girl
-        { id: 348, name: 'Good Girl EDP', brand: 'Carolina Herrera', price: 579.99, image: placeholderImage },
-        { id: 353, name: 'Very Good Girl', brand: 'Carolina Herrera', price: 559.99, image: placeholderImage },
-        { id: 358, name: 'Very Good Girl Glam', brand: 'Carolina Herrera', price: 639.99, image: placeholderImage },
+        // --- PÁGINA 2: FEMININOS POPULARES ---
+        { id: 9, name: '212 VIP Rosé', brand: 'Carolina Herrera', price: 549.99, image: 'fotos/212-vip-rose.jpg' },
+        { id: 10, name: 'La Nuit Trésor', brand: 'Lancôme', price: 619.99, image: 'fotos/la-nuit-tresor.jpg' },
+        { id: 11, name: 'Angel', brand: 'Mugler', price: 749.99, image: 'fotos/angel.jpg' },
+        { id: 12, name: 'Good Girl Blush Elixir', brand: 'Carolina Herrera', price: 649.99, image: 'fotos/good-girl-blush-elixir.jpg' },
+        { id: 13, name: 'La Vie Est Belle', brand: 'Lancôme', price: 619.90, image: 'fotos/la-vie-est-belle.jpg' },
+        { id: 14, name: 'Scandal', brand: 'Jean Paul Gaultier', price: 549.99, image: 'fotos/scandal-feminino.jpg' },
+        { id: 15, name: 'Miss Dior Blooming Bouquet', brand: 'Dior', price: 649.99, image: 'fotos/miss-dior-blooming-bouquet.jpg' },
+        { id: 16, name: 'La Belle', brand: 'Jean Paul Gaultier', price: 599.99, image: 'fotos/la-belle.jpg' },
 
-        // Outros
-        { id: 228, name: 'Versace Eros', brand: 'Versace', price: 489.99, image: placeholderImage },
-        { id: 212, name: 'CK One', brand: 'Calvin Klein', price: 249.99, image: placeholderImage },
-        { id: 207, name: 'Ferrari Black', brand: 'Ferrari', price: 239.99, image: placeholderImage },
-        { id: 430, name: 'Libre', brand: 'YSL', price: 699.99, image: placeholderImage },
+        // --- PÁGINA 3: LINHA BAD BOY ---
+        { id: 17, name: 'Bad Boy', brand: 'Carolina Herrera', price: 499.99, image: 'fotos/bad-boy.jpg' },
+        { id: 18, name: 'Bad Boy Le Parfum', brand: 'Carolina Herrera', price: 520.00, image: 'fotos/bad-boy-le-parfum.jpg' },
+        { id: 19, name: 'Bad Boy Cobalt', brand: 'Carolina Herrera', price: 509.99, image: 'fotos/bad-boy-cobalt.jpg' },
+        { id: 20, name: 'Bad Boy Extreme', brand: 'Carolina Herrera', price: 519.99, image: 'fotos/bad-boy-extreme.jpg' },
+        { id: 21, name: 'Bad Boy Dazzling Garden', brand: 'Carolina Herrera', price: 519.98, image: 'fotos/bad-boy-dazzling-garden.jpg' },
+        { id: 22, name: 'Bad Boy Superstars', brand: 'Carolina Herrera', price: 529.99, image: 'fotos/bad-boy-superstars.jpg' },
+        { id: 23, name: 'Bad Boy Sparkling Ice', brand: 'Carolina Herrera', price: 536.00, image: 'fotos/bad-boy-sparkling-ice.jpg' },
+        { id: 24, name: '212 VIP Men EDT', brand: 'Carolina Herrera', price: 539.99, image: 'fotos/212-vip-men-edt.jpg' },
+
+        // --- PÁGINA 4: LINHA 1 MILLION E LE MALE ---
+        { id: 25, name: '1 Million Royal', brand: 'Paco Rabanne', price: 540.00, image: 'fotos/1-million-royal.jpg' },
+        { id: 26, name: '1 Million Elixir', brand: 'Paco Rabanne', price: 519.99, image: 'fotos/1-million-elixir.jpg' },
+        { id: 27, name: '1 Million Gold', brand: 'Paco Rabanne', price: 499.99, image: 'fotos/1-million-gold.jpg' },
+        { id: 28, name: 'Le Male EDT', brand: 'Jean Paul Gaultier', price: 549.99, image: 'fotos/le-male-edt.jpg' },
+        { id: 29, name: 'Le Male Le Parfum', brand: 'Jean Paul Gaultier', price: 599.99, image: 'fotos/le-male-le-parfum.jpg' },
+        { id: 30, name: 'Ultra Male', brand: 'Jean Paul Gaultier', price: 599.99, image: 'fotos/ultra-male.jpg' },
+        { id: 31, name: 'Le Beau Intense', brand: 'Jean Paul Gaultier', price: 629.99, image: 'fotos/le-beau-intense.jpg' },
+
+        // --- PÁGINA 5: DIOR, CK, FERRARI, VERSACE, ANIMALE ---
+        { id: 32, name: 'Dior Homme EDT', brand: 'Dior', price: 799.99, image: 'fotos/dior-homme-edt.jpg' },
+        { id: 33, name: 'Dior Fahrenheit', brand: 'Dior', price: 799.99, image: 'fotos/dior-fahrenheit.jpg' },
+        { id: 34, name: 'CK Be', brand: 'Calvin Klein', price: 229.99, image: 'fotos/ck-be.jpg' },
+        { id: 35, name: 'CK One', brand: 'Calvin Klein', price: 249.99, image: 'fotos/ck-one.jpg' },
+        { id: 36, name: 'Ferrari Black', brand: 'Ferrari', price: 239.99, image: 'fotos/ferrari-black.jpg' },
+        { id: 37, name: 'Ferrari Red', brand: 'Ferrari', price: 209.99, image: 'fotos/ferrari-red.jpg' },
+        { id: 38, name: 'Kit Animale', brand: 'Animale', price: 399.99, image: 'fotos/kit-animale.jpg' },
+        { id: 39, name: 'Versace Eros', brand: 'Versace', price: 489.99, image: 'fotos/versace-eros.jpg' },
+        
+        // --- PÁGINA 6: LINHA SCANDAL E INVICTUS ---
+        { id: 40, name: 'Scandal Le Parfum', brand: 'Jean Paul Gaultier', price: 549.99, image: 'fotos/scandal-le-parfum-masculino.jpg' },
+        { id: 41, name: 'Scandal Absolu', brand: 'Jean Paul Gaultier', price: 579.99, image: 'fotos/scandal-absolu-masculino.jpg' },
+        { id: 42, name: 'Invictus Victory', brand: 'Paco Rabanne', price: 539.99, image: 'fotos/invictus-victory.jpg' },
+        { id: 43, name: 'Invictus Victory Elixir', brand: 'Paco Rabanne', price: 559.99, image: 'fotos/invictus-victory-elixir.jpg' }, // Nome inferido
+        { id: 44, name: 'Phantom Parfum', brand: 'Paco Rabanne', price: 620.00, image: 'fotos/phantom-parfum.jpg' },
+        { id: 45, name: 'Phantom Legion', brand: 'Paco Rabanne', price: 489.99, image: 'fotos/phantom-legion.jpg' },
+        
+        // --- PÁGINA 7: LINHA SILVER SCENT ---
+        { id: 46, name: 'Silver Scent', brand: 'Jacques Bogart', price: 199.99, image: 'fotos/silver-scent.jpg' },
+        { id: 47, name: 'Silver Scent Intense', brand: 'Jacques Bogart', price: 209.99, image: 'fotos/silver-scent-intense.jpg' },
+        { id: 48, name: 'Silver Scent Pure', brand: 'Jacques Bogart', price: 249.99, image: 'fotos/silver-scent-pure.jpg' },
+        { id: 49, name: 'Silver Scent Infinite', brand: 'Jacques Bogart', price: 229.99, image: 'fotos/silver-scent-infinite.jpg' },
+        { id: 50, name: 'Silver Scent Midnight', brand: 'Jacques Bogart', price: 239.99, image: 'fotos/silver-scent-midnight.jpg' },
+        { id: 51, name: 'Silver Scent Aqua', brand: 'Jacques Bogart', price: 225.00, image: 'fotos/silver-scent-aqua.jpg' },
+        { id: 52, name: 'Silver Scent Deep', brand: 'Jacques Bogart', price: 219.99, image: 'fotos/silver-scent-deep.jpg' },
+        
+        // --- PÁGINA 8: LINHA GOOD GIRL E SCANDAL FEMININO ---
+        { id: 53, name: 'Scandal Le Parfum Intense', brand: 'Jean Paul Gaultier', price: 539.99, image: 'fotos/scandal-le-parfum-intense.jpg' },
+        { id: 54, name: 'Scandal Absolu', brand: 'Jean Paul Gaultier', price: 529.99, image: 'fotos/scandal-absolu-feminino.jpg' },
+        { id: 55, name: 'La Belle Paradise Garden', brand: 'Jean Paul Gaultier', price: 549.99, image: 'fotos/la-belle-paradise-garden.jpg' },
+        { id: 56, name: 'Good Girl EDP', brand: 'Carolina Herrera', price: 579.99, image: 'fotos/good-girl.jpg' },
+        { id: 57, name: 'Very Good Girl', brand: 'Carolina Herrera', price: 559.99, image: 'fotos/very-good-girl.jpg' },
+        { id: 58, name: 'Very Good Girl Glam', brand: 'Carolina Herrera', price: 639.99, image: 'fotos/very-good-girl-glam.jpg' },
+        
+        // --- PÁGINA 9: LINHA ANGEL E LADY MILLION ---
+        { id: 59, name: 'Angel Elixir', brand: 'Mugler', price: 849.99, image: 'fotos/angel-elixir.jpg' },
+        { id: 60, name: 'Angel Nova', brand: 'Mugler', price: 699.99, image: 'fotos/angel-nova.jpg' },
+        { id: 61, name: 'Angel EDT', brand: 'Mugler', price: 549.99, image: 'fotos/angel-edt.jpg' },
+        { id: 62, name: 'Lady Million', brand: 'Paco Rabanne', price: 499.99, image: 'fotos/lady-million.jpg' },
+        { id: 63, name: 'Lady Million Royal', brand: 'Paco Rabanne', price: 509.99, image: 'fotos/lady-million-royal.jpg' },
+        { id: 64, name: 'Lady Million Prive', brand: 'Paco Rabanne', price: 490.00, image: 'fotos/lady-million-prive.jpg' },
+        { id: 65, name: 'Lady Million Fabulous', brand: 'Paco Rabanne', price: 425.00, image: 'fotos/lady-million-fabulous.jpg' },
+        
+        // --- PÁGINA 10: LINHA OLYMPÉA E LIBRE ---
+        { id: 66, name: 'Olympéa', brand: 'Paco Rabanne', price: 499.99, image: 'fotos/olympea.jpg' },
+        { id: 67, name: 'Olympéa Flora', brand: 'Paco Rabanne', price: 509.00, image: 'fotos/olympea-flora.jpg' },
+        { id: 68, name: 'Olympéa Solar Intense', brand: 'Paco Rabanne', price: 549.99, image: 'fotos/olympea-solar-intense.jpg' },
+        { id: 69, name: 'Olympéa Aqua', brand: 'Paco Rabanne', price: 480.99, image: 'fotos/olympea-aqua.jpg' },
+        { id: 70, name: 'Olympéa Blossom', brand: 'Paco Rabanne', price: 459.99, image: 'fotos/olympea-blossom.jpg' },
+        { id: 71, name: 'Libre', brand: 'YSL', price: 699.99, image: 'fotos/libre.jpg' },
+        { id: 72, name: 'Libre Le Parfum', brand: 'YSL', price: 759.00, image: 'fotos/libre-le-parfum.jpg' },
+        { id: 73, name: 'Libre Intense', brand: 'YSL', price: 799.99, image: 'fotos/libre-intense.jpg' },
     ];
     
-    // O restante do código permanece exatamente o mesmo.
+    // ===================================================================================
+    // DAQUI PARA BAIXO, VOCÊ NÃO PRECISA MAIS MEXER. A LÓGICA É AUTOMÁTICA.
+    // ===================================================================================
 
     const whatsappNumber = '5541995252161';
     let cart = JSON.parse(localStorage.getItem('trentiniCart')) || [];
@@ -84,8 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
         productList.forEach(product => {
             const card = document.createElement('div');
             card.className = 'product-card';
+            // BÔNUS: A linha `onerror` abaixo mostra um placeholder caso a sua foto ainda não exista.
             card.innerHTML = `
-                <div class="product-image"><img src="${product.image}" alt="${product.name}"></div>
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x600/f8f9fa/ccc?text=Trentini';">
+                </div>
                 <div class="product-info">
                     <p class="brand">${product.brand}</p>
                     <h3>${product.name}</h3>
@@ -117,7 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.forEach(item => {
             itemsHTML += `
                 <div class="cart-item">
-                    <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-img" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/100x100/f8f9fa/ccc?text=Trentini';">
                     <div class="cart-item-info">
                         <h3>${item.name}</h3>
                         <p>${item.brand}</p>

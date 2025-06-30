@@ -1,50 +1,56 @@
-// CÓDIGO cart.js - OPÇÃO 1 (RECOMENDADA)
+// CÓDIGO cart.js - OPÇÃO 2 (COM IMAGENS VARIADAS)
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- BANCO DE DADOS DE PRODUTOS ---
-    // Usando um link de imagem genérica e elegante para todos os produtos
-    const placeholderImage = 'https://images.unsplash.com/photo-1594035918258-135a894a4a76?q=80&w=1887&auto=format&fit=crop';
+    // Links de imagens genéricas de frascos de perfume do Unsplash
+    const img1 = 'https://images.unsplash.com/photo-1585399001342-07218a14a214?q=80&w=1887&auto=format&fit=crop';
+    const img2 = 'https://images.unsplash.com/photo-1620916566398-39f168a27e48?q=80&w=1887&auto=format&fit=crop';
+    const img3 = 'https://images.unsplash.com/photo-1557173439-af576e333a84?q=80&w=1887&auto=format&fit=crop';
+    const img4 = 'https://images.unsplash.com/photo-1619994340738-c89a71a6e782?q=80&w=1887&auto=format&fit=crop';
+    const img5 = 'https://images.unsplash.com/photo-1541697524049-56b0b54f4a24?q=80&w=1887&auto=format&fit=crop';
+    const img6 = 'https://images.unsplash.com/photo-1610461222343-65d10d6e7368?q=80&w=1887&auto=format&fit=crop';
     
     const products = [
         // Masculinos Populares
-        { id: 1, name: 'One Million', brand: 'Paco Rabanne', price: 499.99, image: placeholderImage },
-        { id: 2, name: '212 VIP Black', brand: 'Carolina Herrera', price: 549.99, image: placeholderImage },
-        { id: 3, name: 'Sauvage', brand: 'Dior', price: 749.99, image: placeholderImage },
-        { id: 4, name: 'Invictus', brand: 'Paco Rabanne', price: 499.99, image: placeholderImage },
-        { id: 5, name: 'Acqua di Giò', brand: 'Giorgio Armani', price: 499.99, image: placeholderImage },
-        { id: 6, name: 'Scandal Pour Homme', brand: 'Jean Paul Gaultier', price: 599.99, image: placeholderImage },
-        { id: 7, name: 'Le Male Elixir', brand: 'Jean Paul Gaultier', price: 789.99, image: placeholderImage },
-        { id: 35, name: 'Phantom', brand: 'Paco Rabanne', price: 549.99, image: placeholderImage },
+        { id: 1, name: 'One Million', brand: 'Paco Rabanne', price: 499.99, image: img1 },
+        { id: 2, name: '212 VIP Black', brand: 'Carolina Herrera', price: 549.99, image: img2 },
+        { id: 3, name: 'Sauvage', brand: 'Dior', price: 749.99, image: img3 },
+        { id: 4, name: 'Invictus', brand: 'Paco Rabanne', price: 499.99, image: img4 },
+        { id: 5, name: 'Acqua di Giò', brand: 'Giorgio Armani', price: 499.99, image: img5 },
+        { id: 6, name: 'Scandal Pour Homme', brand: 'Jean Paul Gaultier', price: 599.99, image: img6 },
+        { id: 7, name: 'Le Male Elixir', brand: 'Jean Paul Gaultier', price: 789.99, image: img1 },
+        { id: 35, name: 'Phantom', brand: 'Paco Rabanne', price: 549.99, image: img2 },
         
         // Femininos Populares
-        { id: 8, name: '212 VIP Rosé', brand: 'Carolina Herrera', price: 549.99, image: placeholderImage },
-        { id: 9, name: 'La Vie Est Belle', brand: 'Lancôme', price: 619.90, image: placeholderImage },
-        { id: 10, name: 'Good Girl Blush', brand: 'Carolina Herrera', price: 649.99, image: placeholderImage },
-        { id: 12, name: 'La Belle', brand: 'Jean Paul Gaultier', price: 599.99, image: placeholderImage },
-        { id: 60, name: 'La Nuit Trésor', brand: 'Lancôme', price: 619.99, image: placeholderImage },
-        { id: 63, name: 'Angel', brand: 'Mugler', price: 749.99, image: placeholderImage },
-        { id: 76, name: 'Scandal', brand: 'Jean Paul Gaultier', price: 549.99, image: placeholderImage },
-        { id: 82, name: 'Miss Dior', brand: 'Dior', price: 649.99, image: placeholderImage },
+        { id: 8, name: '212 VIP Rosé', brand: 'Carolina Herrera', price: 549.99, image: img3 },
+        { id: 9, name: 'La Vie Est Belle', brand: 'Lancôme', price: 619.90, image: img4 },
+        { id: 10, name: 'Good Girl Blush', brand: 'Carolina Herrera', price: 649.99, image: img5 },
+        { id: 12, name: 'La Belle', brand: 'Jean Paul Gaultier', price: 599.99, image: img6 },
+        { id: 60, name: 'La Nuit Trésor', brand: 'Lancôme', price: 619.99, image: img1 },
+        { id: 63, name: 'Angel', brand: 'Mugler', price: 749.99, image: img2 },
+        { id: 76, name: 'Scandal', brand: 'Jean Paul Gaultier', price: 549.99, image: img3 },
+        { id: 82, name: 'Miss Dior', brand: 'Dior', price: 649.99, image: img4 },
 
         // Linha Bad Boy
-        { id: 100, name: 'Bad Boy', brand: 'Carolina Herrera', price: 499.99, image: placeholderImage },
-        { id: 108, name: 'Bad Boy Le Parfum', brand: 'Carolina Herrera', price: 520.00, image: placeholderImage },
-        { id: 110, name: 'Bad Boy Cobalt', brand: 'Carolina Herrera', price: 509.99, image: placeholderImage },
-        { id: 134, name: 'Bad Boy Extreme', brand: 'Carolina Herrera', price: 519.99, image: placeholderImage },
+        { id: 100, name: 'Bad Boy', brand: 'Carolina Herrera', price: 499.99, image: img5 },
+        { id: 108, name: 'Bad Boy Le Parfum', brand: 'Carolina Herrera', price: 520.00, image: img6 },
+        { id: 110, name: 'Bad Boy Cobalt', brand: 'Carolina Herrera', price: 509.99, image: img1 },
+        { id: 134, name: 'Bad Boy Extreme', brand: 'Carolina Herrera', price: 519.99, image: img2 },
         
         // Linha Good Girl
-        { id: 348, name: 'Good Girl EDP', brand: 'Carolina Herrera', price: 579.99, image: placeholderImage },
-        { id: 353, name: 'Very Good Girl', brand: 'Carolina Herrera', price: 559.99, image: placeholderImage },
-        { id: 358, name: 'Very Good Girl Glam', brand: 'Carolina Herrera', price: 639.99, image: placeholderImage },
+        { id: 348, name: 'Good Girl EDP', brand: 'Carolina Herrera', price: 579.99, image: img3 },
+        { id: 353, name: 'Very Good Girl', brand: 'Carolina Herrera', price: 559.99, image: img4 },
+        { id: 358, name: 'Very Good Girl Glam', brand: 'Carolina Herrera', price: 639.99, image: img5 },
 
         // Outros
-        { id: 228, name: 'Versace Eros', brand: 'Versace', price: 489.99, image: placeholderImage },
-        { id: 212, name: 'CK One', brand: 'Calvin Klein', price: 249.99, image: placeholderImage },
-        { id: 207, name: 'Ferrari Black', brand: 'Ferrari', price: 239.99, image: placeholderImage },
-        { id: 430, name: 'Libre', brand: 'YSL', price: 699.99, image: placeholderImage },
+        { id: 228, name: 'Versace Eros', brand: 'Versace', price: 489.99, image: img6 },
+        { id: 212, name: 'CK One', brand: 'Calvin Klein', price: 249.99, image: img1 },
+        { id: 207, name: 'Ferrari Black', brand: 'Ferrari', price: 239.99, image: img2 },
+        { id: 430, name: 'Libre', brand: 'YSL', price: 699.99, image: img3 },
     ];
     
     // O restante do código permanece exatamente o mesmo...
+    // (Copie e cole o resto do código da Opção 1 aqui, pois ele não muda)
 
     const whatsappNumber = '5541995252161';
     let cart = JSON.parse(localStorage.getItem('trentiniCart')) || [];

@@ -142,11 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
         productList.forEach(product => {
             const card = document.createElement('div');
             card.className = 'product-card';
-            // BÔNUS: A linha `onerror` abaixo mostra um placeholder caso a sua foto ainda não exista.
+            // Imagem do produto. Se o arquivo não existir, mostra o placeholder local
             card.innerHTML = `
                 <div class="product-image">
-                    <img src="${product.image}" alt="${product.name}" 
-                         onerror="this.onerror=null;this.src='https://placehold.co/600x600/f8f9fa/ccc?text=Trentini';">
+                    <img src="${product.image}" alt="${product.name}"
+                         onerror="this.onerror=null;this.src='fotos/placeholder.jpg';">
                 </div>
                 <div class="product-info">
                     <p class="brand">${product.brand}</p>
@@ -179,8 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.forEach(item => {
             itemsHTML += `
                 <div class="cart-item">
-                    <img src="${item.image}" alt="${item.name}" class="cart-item-img" 
-                         onerror="this.onerror=null;this.src='https://placehold.co/100x100/f8f9fa/ccc?text=Trentini';">
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-img"
+                         onerror="this.onerror=null;this.src='fotos/placeholder.jpg';">
                     <div class="cart-item-info">
                         <h3>${item.name}</h3>
                         <p>${item.brand}</p>
